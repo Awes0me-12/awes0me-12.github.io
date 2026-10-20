@@ -1,0 +1,19 @@
+# macOS and editor files
+.DS_Store
+.vscode/
+.idea/
+
+# Planning notes stay private
+ISBER_Personal_Website_Plan.md
+*Plan*.md
+
+# Full-resolution originals live in Google Drive, not here
+originals/
+raw/
+*.psd
+*.heic
+*.HEIC
+*.mov
+*.MOV
+*.mp4
+*.zip
