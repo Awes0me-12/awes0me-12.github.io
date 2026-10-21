@@ -15,7 +15,7 @@ Live site: https://awes0me-12.github.io
 | `style.css` | One shared stylesheet for every page |
 | `images/` | Web-sized images only (originals are kept in Google Drive) |
 
-Built with hand-written HTML and CSS. No JavaScript, frameworks, or build step.
+Built with plain HTML and one CSS file. No JavaScript, frameworks, or build step.
 
 ## Preview locally
 

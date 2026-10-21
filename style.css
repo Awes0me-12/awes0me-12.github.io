@@ -5,6 +5,7 @@
   --text: #1f2933;        /* body text */
   --muted: #4b5563;       /* secondary text, 7.5:1 contrast on white */
   --accent: #1d4ed8;      /* links and highlights, 6.7:1 contrast on white */
+  --accent-hover: #1e3a8a; /* hover and focus color, 10.4:1 on white, 9.9:1 on --surface */
   --border: #e5e7eb;
   --surface: #f8fafc;     /* card background */
   --background: #ffffff;
@@ -59,7 +60,10 @@ a {
   color: var(--accent);
 }
 
-a:hover {
+/* Keyboard focus looks the same as mouse hover */
+a:hover,
+a:focus-visible {
+  color: var(--accent-hover);
   text-decoration-thickness: 2px;
 }
 
@@ -94,10 +98,6 @@ img {
   font-size: 0.95rem;
 }
 
-.note {
-  font-style: italic;
-}
-
 /* ---------- Skip link (hidden until focused with the keyboard) ---------- */
 .skip-link {
   position: absolute;
@@ -105,7 +105,7 @@ img {
   top: -3rem;
   padding: 0.5rem 1rem;
   background: var(--accent);
-  color: #fff;
+  color: var(--background);
   z-index: 10;
 }
 
@@ -150,7 +150,8 @@ img {
   padding: 0.25rem 0;
 }
 
-.nav-list a:hover {
+.nav-list a:hover,
+.nav-list a:focus-visible {
   color: var(--accent);
 }
 
@@ -212,7 +213,7 @@ img {
 /* ---------- Photo and graphic grids ---------- */
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); /* 2 photos across, 1 on phones */
   gap: 1.25rem;
 }
 
@@ -256,4 +257,96 @@ figcaption {
   .lead {
     font-size: 1.125rem;
   }
+}
+
+/* ---------- Label/value lists: Home facts, documentary info ---------- */
+.facts,
+.info {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.25rem 1.5rem;
+  margin: 1.25rem 0;
+}
+
+.facts dt,
+.info dt {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.facts dd,
+.info dd {
+  margin: 0;
+}
+
+/* ---------- Confidentiality note as a callout ---------- */
+.note {
+  color: var(--text);
+  background: var(--surface);
+  border-left: 3px solid var(--accent);
+  padding: 0.75rem 1rem;
+}
+
+/* ---------- Home cards: meta line, whole card clickable, one focus ring ---------- */
+.card {
+  position: relative;
+}
+
+.card .meta {
+  margin: 0 0 0.5rem;
+}
+
+.card h3 a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+}
+
+.card:hover,
+.card:focus-within {
+  border-color: var(--accent);
+}
+
+@supports selector(:has(*)) {
+  .card:has(a:focus-visible) {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .card h3 a:focus-visible {
+    outline: none; /* the card ring replaces the link ring */
+  }
+}
+
+/* ---------- Optional: Projects at a glance ---------- */
+.rows {
+  list-style: none;
+  padding: 0;
+  border-top: 1px solid var(--border);
+}
+
+.rows li {
+  display: flex;
+  flex-wrap: wrap; /* meta drops below on phones */
+  justify-content: space-between;
+  gap: 0.25rem 1.5rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+  max-width: none;
+}
+
+/* ---------- Graphics 3 across, photo edges ---------- */
+.photo-grid--graphics {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+}
+
+.photo-grid img {
+  border-radius: var(--radius);
+  outline: 1px solid rgb(0 0 0 / 0.08); /* edge for white graphics */
+  outline-offset: -1px;
+}
+
+figcaption .credit {
+  display: block;
 }
