@@ -138,19 +138,49 @@ else:
       <h2>Building this site</h2>
       <p class="meta">October 2026 – present</p>
       <dl>
-        <dt>Tools</dt>
-        <dd>Plain HTML and one shared CSS stylesheet, version control with Git, and hosting on GitHub Pages.</dd>
-        <dt>Layout decisions</dt>
-        <dd>Four pages with the same navigation, a single-column layout that adapts to phone screens, and a consistent purpose, role, method, and result format for every project.</dd>
-        <dt>Checks</dt>
-        <!-- TODO: update once you've actually run each check. -->
-        <dd>[TODO: list the checks you ran: phone testing, link checks, alt text, keyboard navigation, contrast, W3C validation, Lighthouse]</dd>
+        <dt>Purpose</dt>
+        <!-- DRAFT: rewrite in your own words. -->
+        <dd>Give reviewers a site they can skim in a minute or two on a phone or a desktop, with every claim easy to check.</dd>
+        <dt>My role</dt>
+        <!-- DRAFT: edit the AI-tools clause so it says exactly how you used them. -->
+        <dd>My part: I planned, built, and maintain this site, using AI coding assistants to help draft code and run checks.</dd>
+        <dt>Method</dt>
+        <dd>
+          <ul>
+            <li>Hosting: GitHub Pages, with version control in Git.</li>
+            <li>Code: plain HTML and one shared CSS stylesheet, with no JavaScript, analytics, tracking, or cookies.</li>
+            <li>Layout: four pages with the same navigation, one column that adapts to phone screens, and the same purpose, role, method, result, and link format for every project.</li>
+            <li>Images: 1600 px wide or less, under 250 KB, location data removed, and named <code>YYYY-MM-DD_topic_description_v01</code>.</li>
+            <li>Records: source files, web-ready copies, and a tracker with a content inventory and change log, kept in Google Drive.</li>
+          </ul>
+        </dd>
+        <dt>Result</dt>
+        <dd>
+          Checks run on <time datetime="2026-10-21">October 21, 2026</time>:
+          <ul>
+            <li>All five pages, including the 404 page, pass the W3C HTML validator with 0 errors.</li>
+            <li>31 of 32 links and images return OK on the live site. LinkedIn blocks automated checkers, so that link needs a manual check.</li>
+            <li>All 10 images have alt text and are 1600 px wide or less and under 240 KB.</li>
+            <li>Text colors measure at least 6.4:1 against their backgrounds (the WCAG AA minimum is 4.5:1).</li>
+            <li>No sideways scrolling at a 375 px phone width, and keyboard focus is visible on links and cards.</li>
+            <li>Missing addresses such as <code>/nope</code> and <code>/a/b/c</code> show the 404 page with a real 404 status.</li>
+          </ul>
+          Known issues: the research write-up is unfinished, and I have not yet run Lighthouse or tested with a screen reader. If something doesn't work for you, please <a href="mailto:kaixun1210@gmail.com">email me</a>.
+        </dd>
+        <dt>Link</dt>
+        <dd><a href="https://github.com/Awes0me-12/awes0me-12.github.io">Source code on GitHub</a></dd>
       </dl>
-      <h3>Updates since launch</h3>
-      <!-- Add a dated entry for each real update you log in the Change Log. -->
-      <ul class="update-log">
-        <li>[TODO: date] &middot; [what you noticed, what you changed, how you checked it]</li>
-      </ul>
+
+      <h3 id="change-log">Change log</h3>
+      <p class="meta">Last updated <time datetime="2026-10-21">October 21, 2026</time></p>
+      <!-- Newest first. Each entry mirrors a row in the Change Log sheet: problem, change, how verified, commit. -->
+      <ol class="update-log" reversed>
+        <li><time datetime="2026-10-21">Oct 21, 2026</time> &middot; Content &middot; The Kaggle role did not name my part, and the documentary linked a version without English subtitles. Named my role, linked the subtitled version, and added a Subtitles row. Verified with the W3C validator and on the live site. <a href="https://github.com/Awes0me-12/awes0me-12.github.io/commit/f8da71c">commit f8da71c</a></li>
+        <li><time datetime="2026-10-21">Oct 21, 2026</time> &middot; Content, Images &middot; Projects and Creative still had placeholder text and a dead documentary link. Added the Kaggle pipeline, code excerpt, and chart; the Honor analyses and AI tool work; and the documentary details, link, and eight photos with alt text. Verified with the W3C validator, a 375 px phone-width check, and every image loading on the live site. <a href="https://github.com/Awes0me-12/awes0me-12.github.io/commit/969566a">commit 969566a</a></li>
+        <li><time datetime="2026-10-21">Oct 21, 2026</time> &middot; Links &middot; Missing addresses showed GitHub's generic error page. Added a 404 page whose links start with "/" so they work at any depth. Verified that <code>/nope</code> and <code>/a/b/c</code> return 404 and every link on the page works. <a href="https://github.com/Awes0me-12/awes0me-12.github.io/commit/8464177">commit 8464177</a></li>
+        <li><time datetime="2026-10-21">Oct 21, 2026</time> &middot; Accessibility, Metadata &middot; The site claimed checks and updates that hadn't happened yet, keyboard focus looked different from hover, and pages had no canonical or Open Graph tags. Reworded the claims, matched focus to hover, and added the tags to all four pages. Verified with the Tab key and on the live site. <a href="https://github.com/Awes0me-12/awes0me-12.github.io/commit/e5eccf6">commit e5eccf6</a></li>
+        <li><time datetime="2026-10-19">Oct 19, 2026</time> &middot; Content &middot; The Kaggle purpose was vague, the role did not say it was a team entry, and the code link was dead. Explained the task and scoring, marked it as a team entry, and removed the dead link. Verified that the live page matched the local file. <a href="https://github.com/Awes0me-12/awes0me-12.github.io/commit/654c98b">commit 654c98b</a></li>
+      </ol>
     </article>
   </main>
 
