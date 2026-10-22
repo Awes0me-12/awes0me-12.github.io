@@ -36,34 +36,83 @@
 
     <article class="project" id="kaggle">
       <h2>Santa 2025 Christmas Tree Packing Challenge</h2>
-      <p class="meta">Kaggle competition (Google LLC) &middot; December 2025 – February 2026</p>
+      <p class="meta">Kaggle competition (Google LLC) &middot; November 2025 – February 2026</p>
+      <p><strong>Silver Medal, top 3.3% of 3,357 teams.</strong> A team entry.</p>
       <dl>
         <dt>Purpose</dt>
         <dd>For every shipment size from 1 to 200, pack that many tree-shaped pieces into the smallest possible square box without overlaps. The score is the sum of each box's area divided by its number of trees, so every one of the 200 packings counts.</dd>
         <dt>My role</dt>
-        <!-- TODO: name the part of the pipeline you built. -->
-        <dd>Team entry. [TODO: the part of the pipeline you built]</dd>
+        <!-- TODO: add "My part: ..." naming the stage(s) you built yourself. -->
+        <dd>Team entry. The pipeline below is our team's shared work.</dd>
         <dt>Method</dt>
-        <dd>A three-stage optimization pipeline: randomized initialization, simulated annealing, and a custom greedy refinement step, improved through many rounds of large-scale solution testing.</dd>
+        <dd>
+          <ol>
+            <li>Starting layouts, made two ways: random placement (adapted from Kaggle's starter notebook) and rows of alternating upright and upside-down trees that interlock.</li>
+            <li>Keep the best: for each number of trees, keep the smallest layout from all candidate files.</li>
+            <li>Simulated annealing: nudge and rotate one tree at a time and reject any move that causes an overlap. A worse layout is sometimes kept so the search can escape dead ends. All 200 sizes run in parallel.</li>
+            <li>Greedy tree removal: if a layout with more trees fits in a smaller square, delete a tree on its edge to get a better layout for one tree fewer. Improvements cascade down to smaller sizes.</li>
+            <li>Repeat the annealing and tree removal, and score every candidate before submitting.</li>
+          </ol>
+        </dd>
         <dt>Result</dt>
         <dd>Silver Medal, top 3.3% of 3,357 teams.</dd>
+        <dt>Link</dt>
+        <!-- TODO: add your team name as it appears on the leaderboard. -->
+        <dd><a href="https://www.kaggle.com/competitions/santa-2025">Competition page on Kaggle</a></dd>
       </dl>
+
+      <h3>The key step in code</h3>
+      <p>This is what makes the search simulated annealing. A better layout is always kept. A worse one is kept with probability e<sup>−Δ·1000/T</sup>, which shrinks as the "temperature" T cools, so the search explores widely at first and settles down later.</p>
+      <pre tabindex="0"><code>new_energy, new_real_score = energy_from(cand_env, cand_dist_sum)
+delta = new_energy - current_energy
+
+accept = False
+if delta &lt; 0:
+    accept = True
+else:
+    if T &gt; 1e-10:
+        prob = math.exp(-delta * 1000 / T)
+        accept = rng.random() &lt; prob</code></pre>
+      <p class="meta">Python excerpt from our team's annealing notebook (sa.ipynb).</p>
+
+      <figure>
+        <img src="images/2026-10-21_projects_kaggle-score-by-stage_v01.png" width="1560" height="637" alt="Two charts from one test run. Left: the total score falls from 175.1 at the start to 136.5 after simulated annealing and 130.1 after greedy tree removal. Right: the score for each puzzle size from 1 to 200 trees, lowered by both stages, most of all for 50 trees or fewer.">
+        <figcaption>How each stage lowered the score (lower is better) in one recorded test run that started from the random layouts. This is a practice run, not our final leaderboard submission.</figcaption>
+      </figure>
     </article>
 
     <article class="project" id="dashboard">
-      <h2>Marketing Data Dashboard</h2>
+      <h2>Marketing Data Dashboard and AI Data Tool</h2>
       <p class="meta">Honor Device Co., Ltd. &middot; Data Analysis Engineer Intern &middot; Summer 2026</p>
+      <p><strong>The marketing, algorithm, and product teams used the dashboard to track campaign results.</strong> I also analyzed campaign tests and improved an internal AI tool that answers data questions.</p>
+      <p class="note">These were internal company tools, so no screenshots, data, or internal figures are shared here.</p>
       <dl>
         <dt>Purpose</dt>
-        <dd>Give the marketing, algorithm, and product teams one place to track how advertising and promotion campaigns were performing.</dd>
+        <dd>Give the marketing, algorithm, and product teams one place to track how advertising and promotion campaigns were performing, and make the AI tool's answers to data questions more accurate and complete.</dd>
         <dt>My role</dt>
-        <dd>I built the dashboard and prepared the data behind it.</dd>
+        <dd>I built the dashboard and prepared the data behind it, ran the campaign analyses, and worked on improving the AI data tool.</dd>
         <dt>Method</dt>
-        <dd>I cleaned and validated raw campaign data, resolving errors and inconsistencies, then tracked key metrics: ADVPU, ROI, and shallow- and deep-funnel conversion rates.</dd>
+        <dd>
+          Campaign analysis:
+          <ul>
+            <li>Cleaned and validated raw campaign data, resolving errors and inconsistencies.</li>
+            <li>Tracked ADVPU, ROI, DTR and CVR, and shallow- and deep-funnel conversion rates.</li>
+            <li>Checked prediction bias with PCOC and PVOV.</li>
+            <li>Compared strategies with head-to-head ("horse race") tests and A/B experiments, using p-values to judge whether differences were statistically significant.</li>
+          </ul>
+          AI data tool:
+          <ul>
+            <li>Rebuilt and optimized its analysis pipeline, making results more complete and accurate.</li>
+            <li>Improved its decision tree, prioritization, and intent recognition, so plain-language data questions (NL2SQL) were answered more efficiently and accurately across different intents and business topics.</li>
+            <li>Matched the format and length of each answer to the type of request, so answers were faster to generate and quicker to read.</li>
+            <li>Added more business metrics to the pipeline, making the data more complete and the conclusions more trustworthy.</li>
+          </ul>
+        </dd>
         <dt>Result</dt>
         <dd>The marketing, algorithm, and product teams used the dashboard to track results and improve strategy, product, and content.</dd>
+        <dt>Link</dt>
+        <dd>None public: internal company tools.</dd>
       </dl>
-      <p class="note">This was an internal company tool, so no screenshots or data are shared here.</p>
     </article>
 
     <article class="project" id="research">
