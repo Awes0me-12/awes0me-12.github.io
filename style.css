@@ -206,14 +206,6 @@ img {
   margin-left: 0;
 }
 
-.update-log {
-  padding-left: 1.25rem;
-}
-
-.update-log li {
-  margin-bottom: 0.75rem;
-}
-
 /* ---------- Photo and graphic grids ---------- */
 .photo-grid {
   display: grid;
