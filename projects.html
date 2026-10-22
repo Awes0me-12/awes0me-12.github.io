@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Projects | Kevin Yang</title>
-  <meta name="description" content="Data and research projects by Kevin Yang: a Kaggle silver-medal optimization pipeline, a marketing analytics dashboard, and a research paper.">
+  <meta name="description" content="Data and research projects by Kevin Yang: a Kaggle silver medal, a COMAP modeling Finalist, a bus-stop shade study near UCSB, a data internship, and a research paper.">
   <link rel="canonical" href="https://awes0me-12.github.io/projects.html">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Projects | Kevin Yang">
-  <meta property="og:description" content="Data and research projects by Kevin Yang: a Kaggle silver-medal optimization pipeline, a marketing analytics dashboard, and a research paper.">
+  <meta property="og:description" content="Data and research projects by Kevin Yang: a Kaggle silver medal, a COMAP modeling Finalist, a bus-stop shade study near UCSB, a data internship, and a research paper.">
   <meta property="og:url" content="https://awes0me-12.github.io/projects.html">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
@@ -80,9 +80,65 @@ else:
       </figure>
     </article>
 
+    <article class="project" id="comap">
+      <h2>Interdisciplinary Contest in Modeling: Passive Solar Shading</h2>
+      <p class="meta">COMAP ICM &middot; Problem E &middot; 2026 &middot; Team 2616736</p>
+      <p><strong>Finalist: one of 26 Finalist teams out of 1,649 on Problem E.</strong> A team entry that I led. Our paper: <cite>A Lifecycle Passive Shading Model via Morphing Weather Generation and NSGA-II Optimization</cite>.</p>
+      <dl>
+        <dt>Purpose</dt>
+        <dd>COMAP's Interdisciplinary Contest in Modeling is an international, college-level team contest. Each team builds a mathematical model and writes a report of up to 25 pages, including a letter to the client. Our problem asked for passive solar shading, meaning shades that block hot summer sun but let warming winter sun in. We designed it for two fictional campuses, one hot and low-latitude and one cold and high-latitude, then adapted it to other climates and to a new student union that has to stay comfortable as the climate warms.</dd>
+        <dt>My role</dt>
+        <dd>My part: I led the team, chose the model's variables, compared designs wall by wall and by window-to-wall ratio, and helped write the final report.</dd>
+        <dt>Method</dt>
+        <dd>
+          <ul>
+            <li>Simulated every hour of the year: where the sun is, how much sunlight reaches each wall, and how much of it an overhang, blinds, or trees block.</li>
+            <li>Fed that into a simple heat model of the building (a resistance–capacitance network, which treats heat flow like an electric circuit) to estimate heating, cooling, and summer overheating. For the cold campus, the model also tracks heat stored in exposed concrete.</li>
+            <li>Used a multi-objective genetic algorithm (NSGA-II) to find the best trade-offs between goals that pull against each other, such as less cooling versus less glare.</li>
+            <li>Compared four real cities in two pairs at similar latitudes, and re-tested designs under projected 2030 and 2050 climates from IPCC scenarios.</li>
+            <li>Wrote up the model and recommendations in our report, with a one-page letter to the university.</li>
+          </ul>
+        </dd>
+        <dt>Result</dt>
+        <dd>Finalist, one of 26 teams out of 1,649 on Problem E. One finding from the city comparison: the best overhang depth depends on latitude. It is very shallow at about 64°N, where winter sun is scarce and worth keeping, and medium around 45 to 49°N. The project also led me to my next question: which local bus stops need shade most (see <a href="#shade">Shade Where It Matters</a>).</dd>
+        <dt>Link</dt>
+        <dd><a href="https://www.comap.com/contests/mcm-icm">About the contest on COMAP's site</a></dd>
+      </dl>
+
+      <figure>
+        <img src="images/2026-02-02_projects_comap-city-map_v01.jpg" width="1402" height="648" loading="lazy" decoding="async" alt="Map of North America and Iceland with dashed lines at 64°N and 45°N marking the four comparison cities: Fairbanks and Reykjavik near 64°N, Vancouver and Minneapolis near 45°N.">
+        <figcaption>The four comparison cities, in two pairs at similar latitudes. Figure from our paper; inset maps made in ArcGIS Pro, basemap © Esri.</figcaption>
+      </figure>
+    </article>
+
+    <article class="project" id="shade">
+      <h2>Shade Where It Matters: Bus Stops near UCSB</h2>
+      <!-- TODO: add the project dates once confirmed. -->
+      <p class="meta">FXB Climate Advocates &middot; Community climate project</p>
+      <p><strong>Ranked the shade needs of 36 transit stops around UCSB, Isla Vista, and Goleta.</strong></p>
+      <dl>
+        <dt>Purpose</dt>
+        <dd>Find which bus stops most need shade, so that limited shade funding reaches the riders who depend on exposed stops in the heat. FXB Climate Advocates helps young people develop local climate projects.</dd>
+        <dt>My role</dt>
+        <dd>My own project within the program: I assessed the stops, built the scoring, and compared the rankings.</dd>
+        <dt>Method</dt>
+        <dd>
+          <ul>
+            <li>Assessed 36 transit stops around UCSB, Isla Vista, and Goleta.</li>
+            <li>Scored each stop on shade and heat exposure, alongside accessibility and how much riders depend on transit.</li>
+            <li>Compared how the rankings changed under different weights for those factors and different budgets.</li>
+          </ul>
+        </dd>
+        <dt>Result</dt>
+        <dd>A shade-priority ranking of the 36 stops, with a check of how much it depends on the weights and budget chosen. It applies the same kind of optimization as my contest work to a local public problem.</dd>
+        <dt>Link</dt>
+        <dd>Not published online.</dd>
+      </dl>
+    </article>
+
     <article class="project" id="dashboard">
       <h2>Marketing Data Dashboard and AI Data Tool</h2>
-      <p class="meta">Honor Device Co., Ltd. &middot; Data Analysis Engineer Intern &middot; Summer 2026</p>
+      <p class="meta">Honor Device Co., Ltd. &middot; Data Analytics Engineer Intern &middot; Summer 2026</p>
       <p><strong>The marketing, algorithm, and product teams used the dashboard to track campaign results.</strong> I also analyzed campaign tests and improved an internal AI tool that answers data questions.</p>
       <p class="note">These were internal company tools, so no screenshots, data, or internal figures are shared here.</p>
       <dl>
