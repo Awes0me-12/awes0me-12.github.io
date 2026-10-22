@@ -12,6 +12,7 @@ Live site: https://awes0me-12.github.io
 | `projects.html` | Kaggle optimization project, marketing dashboard, research paper, and how this site was built |
 | `creative.html` | Documentary, field photography, social media samples |
 | `about.html` | Bio, skills, contact |
+| `404.html` | "Page not found", shown by GitHub Pages at any missing address (links start with `/`) |
 | `style.css` | One shared stylesheet for every page |
 | `images/` | Web-sized images only (originals are kept in Google Drive) |
 
