@@ -1,0 +1,148 @@
+/* Visual foundation shared by all five pages, layered over style.css. */
+/* IBM Plex Sans, SIL OFL 1.1. Unmodified fonts and license are in fonts/. */
+/* Source: https://github.com/IBM/plex/tree/71f558992315a12ca1f06a2215d57962a1992162/packages/plex-sans */
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/IBMPlexSans-Regular-Latin1.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/IBMPlexSans-Medium-Latin1.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/IBMPlexSans-SemiBold-Latin1.woff2") format("woff2");
+}
+
+.portfolio {
+  --max-width: 70rem;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.65;
+}
+
+.portfolio .container {
+  padding-right: 1.25rem;
+  padding-left: 1.25rem;
+}
+
+.portfolio :is(h1, h2, h3) {
+  font-weight: 600;
+}
+
+.portfolio .skip-link:is(:hover, :focus-visible) {
+  color: var(--background);
+}
+
+.portfolio .header-inner {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.portfolio .site-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.portfolio .nav-list {
+  gap: 0.25rem 1.5rem;
+  font-size: 0.96875rem;
+  font-weight: 500;
+}
+
+.portfolio .nav-list a {
+  display: inline-block;
+  min-height: 2.75rem;
+  padding: 0.375rem 0;
+}
+
+.portfolio .site-footer {
+  margin-top: 4rem;
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
+  font-size: 0.9375rem;
+}
+
+.portfolio .site-footer p {
+  max-width: none;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.portfolio strong {
+  font-weight: 600;
+}
+
+/* Long inline file names wrap; preformatted examples keep their own scroll. */
+.portfolio :not(pre) > code {
+  overflow-wrap: anywhere;
+}
+
+.portfolio .page-intro {
+  margin: 3.5rem 0 2.75rem;
+}
+
+.portfolio .page-intro h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.page-not-found main {
+  min-height: 45vh;
+}
+
+.page-not-found .page-intro {
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 52rem) {
+  .portfolio .page-intro {
+    margin: 2.75rem 0 2rem;
+  }
+
+  .portfolio .page-intro h1 {
+    font-size: 2rem;
+  }
+
+  .page-not-found .page-intro {
+    margin-bottom: 1.25rem;
+  }
+}
+
+@media (max-width: 45rem) {
+  .portfolio .site-footer {
+    margin-top: 3rem;
+  }
+}
+
+@media (max-width: 36rem) {
+  .portfolio .header-inner nav {
+    flex-basis: 100%;
+  }
+
+  .portfolio .nav-list {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    gap: 0 1.5rem;
+  }
+}
+
+/* Focus rings appear immediately; only color feedback is animated. */
+@media (prefers-reduced-motion: no-preference) {
+  .portfolio a {
+    transition: color 140ms ease, text-decoration-color 140ms ease;
+  }
+}

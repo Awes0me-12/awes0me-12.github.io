@@ -1,0 +1,164 @@
+/* Home work previews and introductory layout. Shared visual rules are in portfolio.css. */
+.page-home {
+  font-synthesis: none;
+}
+
+.page-home .intro {
+  margin: 4rem 0 3.5rem;
+}
+
+.page-home h1 {
+  margin: 0;
+  font-size: clamp(2.25rem, 1.5rem + 2.25vw, 3.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.page-home .lead {
+  max-width: 48ch;
+  margin: 1rem 0 1.25rem;
+  font-size: 1.25rem;
+  line-height: 1.45;
+}
+
+.page-home .intro > p:last-child {
+  max-width: 66ch;
+  margin-bottom: 0;
+}
+
+.page-home #featured-heading {
+  margin: 0 0 1.5rem;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.page-home .featured-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  align-items: start;
+  gap: 2.5rem 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-home .featured-work {
+  position: relative;
+  min-width: 0;
+  max-width: none;
+}
+
+.page-home .work-image {
+  overflow: hidden;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+
+.page-home .work-image--chart {
+  padding: 1rem 0.75rem;
+  border-color: var(--border);
+}
+
+.page-home .work-image img {
+  width: 100%;
+  height: auto;
+}
+
+.page-home .work-figure figcaption {
+  max-width: 62ch;
+  margin-top: 0.625rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.page-home .featured-work h3 {
+  margin: 1.25rem 0 0.625rem;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.page-home .featured-work h3 a {
+  color: var(--text);
+  text-decoration-color: var(--border);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+/* One title link makes the entire work entry clickable without extra Tab stops. */
+.page-home .featured-work h3 a::after {
+  position: absolute;
+  inset: -0.5rem;
+  content: "";
+  border-radius: 4px;
+}
+
+.page-home .featured-work p {
+  margin: 0;
+}
+
+.page-home .featured-work:is(:hover, :focus-within) h3 a {
+  color: var(--accent);
+  text-decoration-color: currentColor;
+}
+
+.page-home .featured-work:is(:hover, :focus-within) .work-image {
+  border-color: var(--accent);
+}
+
+.page-home .featured-work h3 a:focus-visible {
+  outline: none;
+}
+
+.page-home .featured-work h3 a:focus-visible::after {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.page-home .featured-work--site {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  align-items: baseline;
+  gap: 0.625rem 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.page-home .featured-work--site h3 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.page-home .featured-work--site p {
+  color: var(--muted);
+}
+
+@media (max-width: 45rem) {
+  .page-home .intro {
+    margin: 2.75rem 0 2.75rem;
+  }
+
+  .page-home .lead {
+    font-size: 1.1875rem;
+  }
+
+  .page-home .featured-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
+  .page-home .featured-work--site {
+    grid-template-columns: minmax(0, 1fr);
+    padding-top: 1.5rem;
+  }
+}
+
+/* Content is always visible. Only action feedback receives a short transition. */
+@media (prefers-reduced-motion: no-preference) {
+  .page-home .work-image {
+    transition: border-color 160ms ease;
+  }
+}

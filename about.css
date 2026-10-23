@@ -1,0 +1,114 @@
+/* About's background, skills and contact layout; shared styles live in portfolio.css. */
+.page-about .about-overview,
+.page-about .skills-grid {
+  display: grid;
+  gap: 2.75rem;
+}
+
+.page-about :is(.about-bio, .about-education, .skill-group, .about-contact) {
+  min-width: 0;
+}
+
+.page-about :is(.about-overview, .about-skills, .about-contact) h2 {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.page-about .about-bio p {
+  max-width: 66ch;
+  margin: 0 0 1rem;
+}
+
+.page-about .about-bio p:last-child {
+  margin-bottom: 0;
+}
+
+.page-about .education-list {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.page-about .education-list li {
+  max-width: 66ch;
+}
+
+.page-about .education-list li + li {
+  margin-top: 1.25rem;
+}
+
+.page-about .about-skills {
+  margin-top: 4rem;
+}
+
+.page-about .skills-grid {
+  gap: 2.25rem 3rem;
+  margin-top: 1.5rem;
+}
+
+.page-about .skill-group h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.125rem;
+  line-height: 1.35;
+  text-wrap: balance;
+}
+
+.page-about .skill-list {
+  margin: 0;
+}
+
+.page-about .skill-list li {
+  max-width: 66ch;
+  margin-bottom: 0;
+}
+
+.page-about .skill-list li + li {
+  margin-top: 0.5rem;
+}
+
+.page-about .about-contact {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.page-about .about-contact p {
+  margin: 0 0 0.75rem;
+}
+
+.page-about .contact-list {
+  margin: 0;
+}
+
+.page-about .contact-list li {
+  max-width: none;
+}
+
+.page-about .contact-list a {
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 48rem) {
+  .page-about .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .page-about .skill-group--data {
+    grid-row: span 2;
+  }
+}
+
+@media (min-width: 64rem) {
+  .page-about .about-overview {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .page-about .about-education {
+    padding-left: 2rem;
+    border-left: 1px solid var(--border);
+  }
+}

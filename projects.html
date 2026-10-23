@@ -11,9 +11,13 @@
   <meta property="og:description" content="Data and research projects by Kevin Yang: a Kaggle silver medal, a COMAP modeling Finalist, a bus-stop shade study near UCSB, a data internship, and a research paper.">
   <meta property="og:url" content="https://awes0me-12.github.io/projects.html">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/IBMPlexSans-Regular-Latin1.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/IBMPlexSans-SemiBold-Latin1.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="portfolio.css">
+  <link rel="stylesheet" href="projects.css">
 </head>
-<body>
+<body class="portfolio page-projects">
   <a class="skip-link" href="#main">Skip to main content</a>
 
   <header class="site-header">
@@ -31,37 +35,64 @@
   </header>
 
   <main id="main" class="container">
-    <h1>Projects</h1>
-    <p class="lead">Each project is laid out as purpose, my role, method, and result.</p>
+    <header class="projects-intro">
+      <h1>Projects</h1>
+      <p class="lead">Optimization, data analysis, and research.</p>
+    </header>
 
-    <article class="project" id="kaggle">
-      <h2>Santa 2025 Christmas Tree Packing Challenge</h2>
-      <p class="meta">Kaggle competition &middot; November 2025 – February 2026</p>
-      <p><strong>Silver Medal, top 3.3% of 3,357 teams.</strong> A team entry that I led.</p>
-      <dl>
-        <dt>Purpose</dt>
-        <dd>For every shipment size from 1 to 200, pack that many tree-shaped pieces into the smallest possible square box without overlaps. The score is the sum of each box's area divided by its number of trees, so every one of the 200 packings counts.</dd>
-        <dt>My role</dt>
-        <dd>My part: I led the team and built the Python pipeline below, from randomized starts through simulated annealing to greedy refinement. I ran all 200 puzzle sizes in parallel and asynchronously, and compared search settings across repeated runs.</dd>
-        <dt>Method</dt>
-        <dd>
-          <ol>
-            <li>Starting layouts, made two ways: random placement (adapted from Kaggle's starter notebook) and rows of alternating upright and upside-down trees that interlock.</li>
-            <li>Keep the best: for each number of trees, keep the smallest layout from all candidate files.</li>
-            <li>Simulated annealing: nudge and rotate one tree at a time and reject any move that causes an overlap. A worse layout is sometimes kept so the search can escape dead ends. All 200 sizes run in parallel.</li>
-            <li>Greedy tree removal: if a layout with more trees fits in a smaller square, delete a tree on its edge to get a better layout for one tree fewer. Improvements cascade down to smaller sizes.</li>
-            <li>Repeat the annealing and tree removal, and score every candidate before submitting.</li>
-          </ol>
-        </dd>
-        <dt>Result</dt>
-        <dd>Silver Medal, top 3.3% of 3,357 teams.</dd>
-        <dt>Link</dt>
-        <dd><a href="https://www.kaggle.com/competitions/santa-2025">Competition page on Kaggle</a> &middot; <a href="https://www.kaggle.com/competitions/santa-2025/leaderboard?search=lightsearch">Our team, lightsearch, on the final leaderboard</a></dd>
-      </dl>
+    <div class="projects-layout">
+      <nav class="project-index" aria-labelledby="project-index-heading">
+        <h2 id="project-index-heading">On this page</h2>
+        <ul>
+          <li><a href="#kaggle">Kaggle Santa 2025</a></li>
+          <li><a href="#comap">COMAP shading</a></li>
+          <li><a href="#shade">Shade near UCSB</a></li>
+          <li><a href="#dashboard">Honor internship</a></li>
+          <li><a href="#research">Awe study</a></li>
+          <li><a href="#this-site">Building this site</a></li>
+        </ul>
+      </nav>
 
-      <h3>The key step in code</h3>
-      <p>This is what makes the search simulated annealing. A better layout is always kept. A worse one is kept with probability e<sup>−Δ·1000/T</sup>, which shrinks as the "temperature" T cools, so the search explores widely at first and settles down later.</p>
-      <pre tabindex="0"><code>new_energy, new_real_score = energy_from(cand_env, cand_dist_sum)
+      <div class="project-list">
+
+        <article class="project" id="kaggle">
+          <h2>Santa 2025 Christmas Tree Packing Challenge</h2>
+          <p class="meta">Kaggle competition &middot; November 2025 – February 2026</p>
+          <p class="project-summary"><strong>Silver Medal, top 3.3% of 3,357 teams.</strong> A team entry that I led.</p>
+          <dl class="project-details">
+            <div class="project-field project-field--role">
+              <dt>My role</dt>
+              <dd>My part: I led the team and built the Python pipeline below, from randomized starts through simulated annealing to greedy refinement. I ran all 200 puzzle sizes in parallel and asynchronously, and compared search settings across repeated runs.</dd>
+            </div>
+            <div class="project-field project-field--result">
+              <dt>Result</dt>
+              <dd>Silver Medal, top 3.3% of 3,357 teams.</dd>
+            </div>
+            <div class="project-field project-field--purpose">
+              <dt>Purpose</dt>
+              <dd>For every shipment size from 1 to 200, pack that many tree-shaped pieces into the smallest possible square box without overlaps. The score is the sum of each box's area divided by its number of trees, so every one of the 200 packings counts.</dd>
+            </div>
+            <div class="project-field project-field--method">
+              <dt>Method</dt>
+              <dd>
+                <ol>
+                  <li>Starting layouts, made two ways: random placement (adapted from Kaggle's starter notebook) and rows of alternating upright and upside-down trees that interlock.</li>
+                  <li>Keep the best: for each number of trees, keep the smallest layout from all candidate files.</li>
+                  <li>Simulated annealing: nudge and rotate one tree at a time and reject any move that causes an overlap. A worse layout is sometimes kept so the search can escape dead ends. All 200 sizes run in parallel.</li>
+                  <li>Greedy tree removal: if a layout with more trees fits in a smaller square, delete a tree on its edge to get a better layout for one tree fewer. Improvements cascade down to smaller sizes.</li>
+                  <li>Repeat the annealing and tree removal, and score every candidate before submitting.</li>
+                </ol>
+              </dd>
+            </div>
+            <div class="project-field project-field--links">
+              <dt>Link</dt>
+              <dd><a href="https://www.kaggle.com/competitions/santa-2025">Competition page on Kaggle</a> &middot; <a href="https://www.kaggle.com/competitions/santa-2025/leaderboard?search=lightsearch">Our team, lightsearch, on the final leaderboard</a></dd>
+            </div>
+          </dl>
+
+          <h3>The key step in code</h3>
+          <p>This is what makes the search simulated annealing. A better layout is always kept. A worse one is kept with probability e<sup>−Δ·1000/T</sup>, which shrinks as the "temperature" T cools, so the search explores widely at first and settles down later.</p>
+          <pre tabindex="0"><code>new_energy, new_real_score = energy_from(cand_env, cand_dist_sum)
 delta = new_energy - current_energy
 
 accept = False
@@ -71,173 +102,231 @@ else:
     if T &gt; 1e-10:
         prob = math.exp(-delta * 1000 / T)
         accept = rng.random() &lt; prob</code></pre>
-      <p class="meta">Python excerpt from our team's annealing notebook (sa.ipynb).</p>
+          <p class="meta">Python excerpt from our team's annealing notebook (sa.ipynb).</p>
 
-      <figure>
-        <img src="images/2026-10-21_projects_kaggle-score-by-stage_v01.png" width="1560" height="637" alt="Two charts from one test run. Left: the total score falls from 175.1 at the start to 136.5 after simulated annealing and 130.1 after greedy tree removal. Right: the score for each puzzle size from 1 to 200 trees, lowered by both stages, most of all for 50 trees or fewer.">
-        <figcaption>How each stage lowered the score (lower is better) in one recorded test run that started from the random layouts. This is a practice run, not our final leaderboard submission.</figcaption>
-      </figure>
-    </article>
+          <figure>
+            <img src="images/2026-10-21_projects_kaggle-score-by-stage_v01.png" width="1560" height="637" alt="Two charts from one test run. Left: the total score falls from 175.1 at the start to 136.5 after simulated annealing and 130.1 after greedy tree removal. Right: the score for each puzzle size from 1 to 200 trees, lowered by both stages, most of all for 50 trees or fewer.">
+            <figcaption>How each stage lowered the score (lower is better) in one recorded test run that started from the random layouts. This is a practice run, not our final leaderboard submission. <a href="images/2026-10-21_projects_kaggle-score-by-stage_v01.png">View full-size chart</a>.</figcaption>
+          </figure>
+        </article>
 
-    <article class="project" id="comap">
-      <h2>Interdisciplinary Contest in Modeling: Passive Solar Shading</h2>
-      <p class="meta">COMAP ICM &middot; Problem E &middot; 2026 &middot; Team 2616736</p>
-      <p><strong>Finalist: one of 26 Finalist teams out of 1,649 on Problem E.</strong> A team entry that I led. Our paper: <cite>A Lifecycle Passive Shading Model via Morphing Weather Generation and NSGA-II Optimization</cite>.</p>
-      <dl>
-        <dt>Purpose</dt>
-        <dd>COMAP's Interdisciplinary Contest in Modeling is an international, college-level team contest. Each team builds a mathematical model and writes a report of up to 25 pages, including a letter to the client. Our problem asked for passive solar shading, meaning shades that block hot summer sun but let warming winter sun in. We designed it for two fictional campuses, one hot and low-latitude and one cold and high-latitude, then adapted it to other climates and to a new student union that has to stay comfortable as the climate warms.</dd>
-        <dt>My role</dt>
-        <dd>My part: I led the team, chose the model's variables, compared designs wall by wall and by window-to-wall ratio, and helped write the final report.</dd>
-        <dt>Method</dt>
-        <dd>
-          <ul>
-            <li>Simulated every hour of the year: where the sun is, how much sunlight reaches each wall, and how much of it an overhang, blinds, or trees block.</li>
-            <li>Fed that into a simple heat model of the building (a resistance–capacitance network, which treats heat flow like an electric circuit) to estimate heating, cooling, and summer overheating. For the cold campus, the model also tracks heat stored in exposed concrete.</li>
-            <li>Used a multi-objective genetic algorithm (NSGA-II) to find the best trade-offs between goals that pull against each other, such as less cooling versus less glare.</li>
-            <li>Compared four real cities in two pairs at similar latitudes, and re-tested designs under projected 2030 and 2050 climates from IPCC scenarios.</li>
-            <li>Wrote up the model and recommendations in our report, with a one-page letter to the university.</li>
-          </ul>
-        </dd>
-        <dt>Result</dt>
-        <dd>Finalist, one of 26 teams out of 1,649 on Problem E. One finding from the city comparison: the best overhang depth depends on latitude. It is very shallow at about 64°N, where winter sun is scarce and worth keeping, and medium around 45 to 49°N. The project also led me to my next question: which local bus stops need shade most (see <a href="#shade">Shade Where It Matters</a>).</dd>
-        <dt>Link</dt>
-        <dd><a href="https://www.comap.com/contests/mcm-icm">About the contest on COMAP's site</a></dd>
-      </dl>
+        <article class="project" id="comap">
+          <h2>Interdisciplinary Contest in Modeling: Passive Solar Shading</h2>
+          <p class="meta">COMAP ICM &middot; Problem E &middot; 2026 &middot; Team 2616736</p>
+          <p class="project-summary"><strong>Finalist: one of 26 Finalist teams out of 1,649 on Problem E.</strong> A team entry that I led. Our paper: <cite>A Lifecycle Passive Shading Model via Morphing Weather Generation and NSGA-II Optimization</cite>.</p>
+          <dl class="project-details">
+            <div class="project-field project-field--role">
+              <dt>My role</dt>
+              <dd>My part: I led the team, chose the model's variables, compared designs wall by wall and by window-to-wall ratio, and helped write the final report.</dd>
+            </div>
+            <div class="project-field project-field--result">
+              <dt>Result</dt>
+              <dd><p>Finalist, one of 26 teams out of 1,649 on Problem E.</p>
+                <p>One finding from the city comparison: the best overhang depth depends on latitude. It is very shallow at about 64°N, where winter sun is scarce and worth keeping, and medium around 45 to 49°N.</p>
+                <p>The project also led me to my next question: which local bus stops need shade most (see <a href="#shade">Shade Where It Matters</a>).</p></dd>
+            </div>
+            <div class="project-field project-field--purpose">
+              <dt>Purpose</dt>
+              <dd>COMAP's Interdisciplinary Contest in Modeling is an international, college-level team contest. Each team builds a mathematical model and writes a report of up to 25 pages, including a letter to the client. Our problem asked for passive solar shading, meaning shades that block hot summer sun but let warming winter sun in. We designed it for two fictional campuses, one hot and low-latitude and one cold and high-latitude, then adapted it to other climates and to a new student union that has to stay comfortable as the climate warms.</dd>
+            </div>
+            <div class="project-field project-field--method">
+              <dt>Method</dt>
+              <dd>
+                <ul>
+                  <li>Simulated every hour of the year: where the sun is, how much sunlight reaches each wall, and how much of it an overhang, blinds, or trees block.</li>
+                  <li>Fed that into a simple heat model of the building (a resistance–capacitance network, which treats heat flow like an electric circuit) to estimate heating, cooling, and summer overheating. For the cold campus, the model also tracks heat stored in exposed concrete.</li>
+                  <li>Used a multi-objective genetic algorithm (NSGA-II) to find the best trade-offs between goals that pull against each other, such as less cooling versus less glare.</li>
+                  <li>Compared four real cities in two pairs at similar latitudes, and re-tested designs under projected 2030 and 2050 climates from IPCC scenarios.</li>
+                  <li>Wrote up the model and recommendations in our report, with a one-page letter to the university.</li>
+                </ul>
+              </dd>
+            </div>
+            <div class="project-field project-field--links">
+              <dt>Link</dt>
+              <dd><a href="https://www.comap.com/contests/mcm-icm">About the contest on COMAP's site</a></dd>
+            </div>
+          </dl>
 
-      <figure>
-        <img src="images/2026-02-02_projects_comap-city-map_v01.jpg" width="1402" height="648" loading="lazy" decoding="async" alt="Map of North America and Iceland with dashed lines at 64°N and 45°N marking the four comparison cities: Fairbanks and Reykjavik near 64°N, Vancouver and Minneapolis near 45°N.">
-        <figcaption>The four comparison cities, in two pairs at similar latitudes. Figure from our paper; inset maps made in ArcGIS Pro, basemap © Esri.</figcaption>
-      </figure>
-    </article>
+          <figure>
+            <img src="images/2026-02-02_projects_comap-city-map_v01.jpg" width="1402" height="648" loading="lazy" decoding="async" alt="Map of North America and Iceland with dashed lines at 64°N and 45°N marking the four comparison cities: Fairbanks and Reykjavik near 64°N, Vancouver and Minneapolis near 45°N.">
+            <figcaption>The four comparison cities, in two pairs at similar latitudes. Figure from our paper; inset maps made in ArcGIS Pro, basemap © Esri. <a href="images/2026-02-02_projects_comap-city-map_v01.jpg">View full-size map</a>.</figcaption>
+          </figure>
+        </article>
 
-    <article class="project" id="shade">
-      <h2>Shade Where It Matters: Bus Stops near UCSB</h2>
-      <p class="meta">FXB Climate Advocates &middot; Community climate project</p>
-      <p><strong>Ranked the shade needs of 36 transit stops around UCSB, Isla Vista, and Goleta.</strong></p>
-      <dl>
-        <dt>Purpose</dt>
-        <dd>Find which bus stops most need shade, so that limited shade funding reaches the riders who depend on exposed stops in the heat. FXB Climate Advocates helps young people develop local climate projects.</dd>
-        <dt>My role</dt>
-        <dd>My own project within the program: I assessed the stops, built the scoring, and compared the rankings.</dd>
-        <dt>Method</dt>
-        <dd>
-          <ul>
-            <li>Assessed 36 transit stops around UCSB, Isla Vista, and Goleta.</li>
-            <li>Scored each stop on shade and heat exposure, alongside accessibility and how much riders depend on transit.</li>
-            <li>Compared how the rankings changed under different weights for those factors and different budgets.</li>
-          </ul>
-        </dd>
-        <dt>Result</dt>
-        <dd>A shade-priority ranking of the 36 stops, with a check of how much it depends on the weights and budget chosen. It applies the same kind of optimization as my contest work to a local public problem.</dd>
-        <dt>Link</dt>
-        <dd>Not published online.</dd>
-      </dl>
-    </article>
+        <article class="project" id="shade">
+          <h2>Shade Where It Matters: Bus Stops near UCSB</h2>
+          <p class="meta">FXB Climate Advocates &middot; Community climate project</p>
+          <p class="project-summary"><strong>Ranked the shade needs of 36 transit stops around UCSB, Isla Vista, and Goleta.</strong></p>
+          <dl class="project-details">
+            <div class="project-field project-field--role">
+              <dt>My role</dt>
+              <dd>My own project within the program: I assessed the stops, built the scoring, and compared the rankings.</dd>
+            </div>
+            <div class="project-field project-field--result">
+              <dt>Result</dt>
+              <dd>A shade-priority ranking of the 36 stops, with a check of how much it depends on the weights and budget chosen. It applies the same kind of optimization as my contest work to a local public problem.</dd>
+            </div>
+            <div class="project-field project-field--purpose">
+              <dt>Purpose</dt>
+              <dd>Find which bus stops most need shade, so that limited shade funding reaches the riders who depend on exposed stops in the heat. FXB Climate Advocates helps young people develop local climate projects.</dd>
+            </div>
+            <div class="project-field project-field--method">
+              <dt>Method</dt>
+              <dd>
+                <ul>
+                  <li>Assessed 36 transit stops around UCSB, Isla Vista, and Goleta.</li>
+                  <li>Scored each stop on shade and heat exposure, alongside accessibility and how much riders depend on transit.</li>
+                  <li>Compared how the rankings changed under different weights for those factors and different budgets.</li>
+                </ul>
+              </dd>
+            </div>
+            <div class="project-field project-field--links">
+              <dt>Link</dt>
+              <dd>Not published online.</dd>
+            </div>
+          </dl>
+        </article>
 
-    <article class="project" id="dashboard">
-      <h2>Marketing Data Dashboard and AI Data Tool</h2>
-      <p class="meta">Honor Device Co., Ltd. &middot; Data Analytics Engineer Intern &middot; Summer 2026</p>
-      <p><strong>The marketing, algorithm, and product teams used the dashboard to track campaign results.</strong> I also analyzed campaign tests and improved an internal AI tool that answers data questions.</p>
-      <p class="note">These were internal company tools, so no screenshots, data, or internal figures are shared here.</p>
-      <dl>
-        <dt>Purpose</dt>
-        <dd>Give the marketing, algorithm, and product teams one place to track how advertising and promotion campaigns were performing, and make the AI tool's answers to data questions more accurate and complete.</dd>
-        <dt>My role</dt>
-        <dd>I built the dashboard and prepared the data behind it, ran the campaign analyses, and worked on improving the AI data tool.</dd>
-        <dt>Method</dt>
-        <dd>
-          Campaign analysis:
-          <ul>
-            <li>Cleaned and validated raw campaign data, resolving errors and inconsistencies.</li>
-            <li>Tracked ADVPU, ROI, DTR and CVR, and shallow- and deep-funnel conversion rates.</li>
-            <li>Checked prediction bias with PCOC and PVOV.</li>
-            <li>Compared strategies with head-to-head ("horse race") tests and A/B experiments, using p-values to judge whether differences were statistically significant.</li>
-          </ul>
-          AI data tool:
-          <ul>
-            <li>Rebuilt and optimized its analysis pipeline, making results more complete and accurate.</li>
-            <li>Improved its decision tree, prioritization, and intent recognition, so plain-language data questions (NL2SQL) were answered more efficiently and accurately across different intents and business topics.</li>
-            <li>Matched the format and length of each answer to the type of request, so answers were faster to generate and quicker to read.</li>
-            <li>Added more business metrics to the pipeline, making the data more complete and the conclusions more trustworthy.</li>
-          </ul>
-        </dd>
-        <dt>Result</dt>
-        <dd>The marketing, algorithm, and product teams used the dashboard to track results and improve strategy, product, and content.</dd>
-        <dt>Link</dt>
-        <dd>None public: internal company tools.</dd>
-      </dl>
-    </article>
+        <article class="project" id="dashboard">
+          <h2>Marketing Data Dashboard and AI Data Tool</h2>
+          <p class="meta">Honor Device Co., Ltd. &middot; Data Analytics Engineer Intern &middot; Summer 2026</p>
+          <p class="project-summary"><strong>The marketing, algorithm, and product teams used the dashboard to track campaign results.</strong> I also analyzed campaign tests and improved an internal AI tool that answers data questions.</p>
+          <p class="note">These were internal company tools, so no screenshots, data, or internal figures are shared here.</p>
+          <dl class="project-details">
+            <div class="project-field project-field--role">
+              <dt>My role</dt>
+              <dd>I built the dashboard and prepared the data behind it, ran the campaign analyses, and worked on improving the AI data tool.</dd>
+            </div>
+            <div class="project-field project-field--result">
+              <dt>Result</dt>
+              <dd>The marketing, algorithm, and product teams used the dashboard to track results and improve strategy, product, and content.</dd>
+            </div>
+            <div class="project-field project-field--purpose">
+              <dt>Purpose</dt>
+              <dd>Give the marketing, algorithm, and product teams one place to track how advertising and promotion campaigns were performing, and make the AI tool's answers to data questions more accurate and complete.</dd>
+            </div>
+            <div class="project-field project-field--method">
+              <dt>Method</dt>
+              <dd>
+                Campaign analysis:
+                <ul>
+                  <li>Cleaned and validated raw campaign data, resolving errors and inconsistencies.</li>
+                  <li>Tracked ADVPU, ROI, DTR and CVR, and shallow- and deep-funnel conversion rates.</li>
+                  <li>Checked prediction bias with PCOC and PVOV.</li>
+                  <li>Compared strategies with head-to-head ("horse race") tests and A/B experiments, using p-values to judge whether differences were statistically significant.</li>
+                </ul>
+                AI data tool:
+                <ul>
+                  <li>Rebuilt and optimized its analysis pipeline, making results more complete and accurate.</li>
+                  <li>Improved its decision tree, prioritization, and intent recognition, so plain-language data questions (NL2SQL) were answered more efficiently and accurately across different intents and business topics.</li>
+                  <li>Matched the format and length of each answer to the type of request, so answers were faster to generate and quicker to read.</li>
+                  <li>Added more business metrics to the pipeline, making the data more complete and the conclusions more trustworthy.</li>
+                </ul>
+              </dd>
+            </div>
+            <div class="project-field project-field--links">
+              <dt>Link</dt>
+              <dd>None public: internal company tools.</dd>
+            </div>
+          </dl>
+        </article>
 
-    <article class="project" id="research">
-      <h2>Research Paper: How Does Awe Influence Interpersonal Behavior?</h2>
-      <p class="meta">Yuanpei Young Scholars Program &middot; Advisor: Professor Shi &middot; December 2022 – March 2023</p>
-      <p><strong>A two-group online experiment: people shown awe-inspiring pictures rated their awe higher, but were not significantly more willing to communicate across social classes.</strong></p>
-      <dl>
-        <dt>Purpose</dt>
-        <dd>Test whether feeling awe makes people more willing to communicate with people from other social classes. The hypothesis came from research on the "small self": awe can make people feel part of a larger group rather than separate individuals.</dd>
-        <dt>My role</dt>
-        <dd>Independent researcher and sole author: I built the online questionnaire, using a picture-based way of inducing awe adapted from Jiang and Sedikides (2021), screened the responses, and analyzed the data.</dd>
-        <dt>Method</dt>
-        <dd>
-          <ul>
-            <li>An online questionnaire on the Credamo survey platform. 82 people of different ages, jobs, and social classes in China took part, and the analysis used 80 responses, 40 per group.</li>
-            <li>Participants were split between two groups. One group saw awe-inspiring pictures, such as large mountains and a galaxy. The other saw everyday scenes, such as a park and a shopping mall. Each person imagined being in the scene.</li>
-            <li>Everyone then rated, from 1 to 10, their feeling of awe and their willingness to communicate with people of a lower social class, a higher social class, and friends.</li>
-            <li>I removed responses finished in under 200 seconds. An open question asking people to describe a similar experience also served as a check for careless answers.</li>
-            <li>I compared the two groups' mean ratings and used two-sided Welch t-tests on the three willingness-to-communicate ratings.</li>
-          </ul>
-        </dd>
-        <dt>Result</dt>
-        <dd>The awe group rated its awe higher than the neutral group (8.3 versus 6.2 out of 10), though I did not test that gap statistically. Willingness to communicate did not differ significantly between the groups for lower-class people, higher-class people, or friends (p = 0.59 to 0.87), so the hypothesis was not supported. An informal look at the open answers hinted at one possible effect: one awe-group answer used many group words such as "we" and "us", while many neutral-group answers described calm moments alone. I did not count or test this. I wrote the study up as an 8-page paper and presented it in a formal oral defense.</dd>
-        <dt>Link</dt>
-        <dd>Paper not published online. No participant data is published here.</dd>
-      </dl>
+        <article class="project" id="research">
+          <h2>Research Paper: How Does Awe Influence Interpersonal Behavior?</h2>
+          <p class="meta">Yuanpei Young Scholars Program &middot; Advisor: Professor Shi &middot; December 2022 – March 2023</p>
+          <p class="project-summary"><strong>A two-group online experiment: people shown awe-inspiring pictures rated their awe higher, but were not significantly more willing to communicate across social classes.</strong></p>
+          <dl class="project-details">
+            <div class="project-field project-field--role">
+              <dt>My role</dt>
+              <dd>Independent researcher and sole author: I built the online questionnaire, using a picture-based way of inducing awe adapted from Jiang and Sedikides (2021), screened the responses, and analyzed the data.</dd>
+            </div>
+            <div class="project-field project-field--result">
+              <dt>Result</dt>
+              <dd><p>The awe group rated its awe higher than the neutral group (8.3 versus 6.2 out of 10), though I did not test that gap statistically. Willingness to communicate did not differ significantly between the groups for lower-class people, higher-class people, or friends (p = 0.59 to 0.87), so the hypothesis was not supported.</p>
+                <p>An informal look at the open answers hinted at one possible effect: one awe-group answer used many group words such as "we" and "us", while many neutral-group answers described calm moments alone. I did not count or test this.</p>
+                <p>I wrote the study up as an 8-page paper and presented it in a formal oral defense.</p></dd>
+            </div>
+            <div class="project-field project-field--purpose">
+              <dt>Purpose</dt>
+              <dd>Test whether feeling awe makes people more willing to communicate with people from other social classes. The hypothesis came from research on the "small self": awe can make people feel part of a larger group rather than separate individuals.</dd>
+            </div>
+            <div class="project-field project-field--method">
+              <dt>Method</dt>
+              <dd>
+                <ul>
+                  <li>An online questionnaire on the Credamo survey platform. 82 people of different ages, jobs, and social classes in China took part, and the analysis used 80 responses, 40 per group.</li>
+                  <li>Participants were split between two groups. One group saw awe-inspiring pictures, such as large mountains and a galaxy. The other saw everyday scenes, such as a park and a shopping mall. Each person imagined being in the scene.</li>
+                  <li>Everyone then rated, from 1 to 10, their feeling of awe and their willingness to communicate with people of a lower social class, a higher social class, and friends.</li>
+                  <li>I removed responses finished in under 200 seconds. An open question asking people to describe a similar experience also served as a check for careless answers.</li>
+                  <li>I compared the two groups' mean ratings and used two-sided Welch t-tests on the three willingness-to-communicate ratings.</li>
+                </ul>
+              </dd>
+            </div>
+            <div class="project-field project-field--links">
+              <dt>Link</dt>
+              <dd>Paper not published online. No participant data is published here.</dd>
+            </div>
+          </dl>
 
-      <figure>
-        <img src="images/2026-10-21_projects_awe-study-means_v01.png" width="1400" height="672" loading="lazy" decoding="async" alt="Bar chart of mean ratings out of 10, awe group versus neutral group. Feeling of awe: 8.3 versus 6.2. Willingness to talk with a lower social class: 7.3 versus 7.2. With a higher social class: 7.4 versus 7.6. With friends: 8.9 versus 8.8.">
-        <figcaption>Mean ratings for each group (40 responses each), redrawn from the paper's data. None of the three willingness gaps was statistically significant.</figcaption>
-      </figure>
-    </article>
+          <figure>
+            <img src="images/2026-10-21_projects_awe-study-means_v01.png" width="1400" height="672" loading="lazy" decoding="async" alt="Bar chart of mean ratings out of 10, awe group versus neutral group. Feeling of awe: 8.3 versus 6.2. Willingness to talk with a lower social class: 7.3 versus 7.2. With a higher social class: 7.4 versus 7.6. With friends: 8.9 versus 8.8.">
+            <figcaption>Mean ratings for each group (40 responses each), redrawn from the paper's data. None of the three willingness gaps was statistically significant. <a href="images/2026-10-21_projects_awe-study-means_v01.png">View full-size chart</a>.</figcaption>
+          </figure>
+        </article>
 
-    <article class="project" id="this-site">
-      <h2>Building this site</h2>
-      <p class="meta">October 2026 – present</p>
-      <dl>
-        <dt>Purpose</dt>
-        <!-- DRAFT: rewrite in your own words. -->
-        <dd>Give reviewers a site they can skim in a minute or two on a phone or a desktop, with every claim easy to check.</dd>
-        <dt>My role</dt>
-        <!-- DRAFT: edit the AI-tools clause so it says exactly how you used them. -->
-        <dd>My part: I planned, built, and maintain this site, using AI coding assistants to help draft code and run checks.</dd>
-        <dt>Method</dt>
-        <dd>
-          <ul>
-            <li>Hosting: GitHub Pages, with version control in Git.</li>
-            <li>Code: plain HTML and one shared CSS stylesheet, with no JavaScript, analytics, tracking, or cookies.</li>
-            <li>Layout: four pages with the same navigation, one column that adapts to phone screens, and the same purpose, role, method, result, and link format for every project.</li>
-            <li>Images: a long edge of 1600 px or less, under 250 KB, location data removed, and named <code>YYYY-MM-DD_topic_description_v01</code>.</li>
-            <li>Records: a naming guide and a tracker with a content inventory and change log, kept in Google Drive. The inventory maps source files to web-ready copies.</li>
-            <li>Maintenance: after launch, I clarified the Kaggle task and the team's contribution and replaced an invalid link. I use a private tracker to record problems, changes, and verification, and compare local and published pages when checking a release.</li>
-          </ul>
-        </dd>
-        <dt>Result</dt>
-        <dd>
-          Local preview checks run on <time datetime="2026-10-22">October 22, 2026</time>:
-          <ul>
-            <li>All five pages, including the 404 page, pass the W3C HTML validator with 0 errors and 0 warnings.</li>
-            <li>All 62 local link and resource references resolve, including links to sections within pages.</li>
-            <li>All 12 images have alt text and dimensions, are 1600 px or less on the long edge and under 250 KB, and contain no EXIF data.</li>
-            <li>Text colors measure at least 6.4:1 against their backgrounds (the WCAG AA minimum is 4.5:1).</li>
-            <li>All five pages fit a 375 px phone viewport and a desktop browser at 200% zoom without sideways scrolling. Keyboard focus is visible on links, cards, and the code box.</li>
-          </ul>
-          <p>Separate checks of the published version on the same date found HTTP 200 responses for its five pages, stylesheet, favicon, and 12 images. Missing addresses such as <code>/nope</code> and <code>/a/b/c</code> returned the custom page with HTTP 404.</p>
-          <p>Five of the six distinct external links returned HTTP 200, and the Kaggle leaderboard also loaded the team's result in a browser. LinkedIn returned HTTP 999, blocking the automated check; that profile still needs a manual check.</p>
-          Known issues: I have not yet run Lighthouse or tested with a screen reader. If something doesn't work for you, please <a href="mailto:kaixun1210@gmail.com">email me</a>.
-        </dd>
-        <dt>Link</dt>
-        <dd><a href="https://github.com/Awes0me-12/awes0me-12.github.io">Source code on GitHub</a></dd>
-      </dl>
-    </article>
+        <article class="project" id="this-site">
+          <h2>Building this site</h2>
+          <p class="meta">October 2026 – present</p>
+          <p class="project-summary"><strong>A four-page portfolio built and maintained with HTML and CSS.</strong></p>
+          <dl class="project-details">
+            <div class="project-field project-field--role">
+              <dt>My role</dt>
+              <!-- DRAFT: edit the AI-tools clause so it says exactly how you used them. -->
+              <dd>My part: I planned, built, and maintain this site, using AI coding assistants to help draft code and run checks.</dd>
+            </div>
+            <div class="project-field project-field--result">
+              <dt>Result</dt>
+              <dd>
+                <p>For the redesigned Home and Projects pages, I checked phone and desktop layouts, zoom, keyboard navigation, reduced motion, font fallbacks, and links to individual projects. Both pages pass the local Nu HTML Checker with no errors; Home retains one intentional list-role warning.</p>
+                Baseline checks before this visual redesign, run locally on <time datetime="2026-10-22">October 22, 2026</time>:
+                <ul>
+                  <li>All five pages, including the 404 page, pass the W3C HTML validator with 0 errors and 0 warnings.</li>
+                  <li>All 62 local link and resource references resolve, including links to sections within pages.</li>
+                  <li>All 12 images have alt text and dimensions, are 1600 px or less on the long edge and under 250 KB, and contain no EXIF data.</li>
+                  <li>Text colors measure at least 6.4:1 against their backgrounds (the WCAG AA minimum is 4.5:1).</li>
+                  <li>All five pages fit a 375 px phone viewport and a desktop browser at 200% zoom without sideways scrolling. Keyboard focus is visible on links, cards, and the code box.</li>
+                </ul>
+                <p>Separate checks of the published version on the same date found HTTP 200 responses for its five pages, stylesheet, favicon, and 12 images. Missing addresses such as <code>/nope</code> and <code>/a/b/c</code> returned the custom page with HTTP 404.</p>
+                <p>Five of the six distinct external links returned HTTP 200, and the Kaggle leaderboard also loaded the team's result in a browser. LinkedIn returned HTTP 999, blocking the automated check; that profile still needs a manual check.</p>
+                Known issues: I have not yet run Lighthouse or tested with a screen reader. If something doesn't work for you, please <a href="mailto:kaixun1210@gmail.com">email me</a>.
+              </dd>
+            </div>
+            <div class="project-field project-field--purpose">
+              <dt>Purpose</dt>
+              <!-- DRAFT: rewrite in your own words. -->
+              <dd>Give reviewers a site they can skim in a minute or two on a phone or a desktop, with every claim easy to check.</dd>
+            </div>
+            <div class="project-field project-field--method">
+              <dt>Method</dt>
+              <dd>
+                <ul>
+                  <li>Hosting: GitHub Pages, with version control in Git.</li>
+                  <li>Code: plain HTML with a shared base stylesheet and page-specific CSS, with no JavaScript, analytics, tracking, or cookies.</li>
+                  <li>Layout: four pages with the same navigation. Projects has a contents column on wide screens and a single column on smaller screens, with consistent role, result, purpose, method, and Link fields for every project.</li>
+                  <li>Images: a long edge of 1600 px or less, under 250 KB, location data removed, and named <code>YYYY-MM-DD_topic_description_v01</code>.</li>
+                  <li>Records: a naming guide and a tracker with a content inventory and change log, kept in Google Drive. The inventory maps source files to web-ready copies.</li>
+                  <li>Maintenance: after launch, I clarified the Kaggle task and the team's contribution and replaced an invalid link. I use a private tracker to record problems, changes, and verification, and compare local and published pages when checking a release.</li>
+                </ul>
+              </dd>
+            </div>
+            <div class="project-field project-field--links">
+              <dt>Link</dt>
+              <dd><a href="https://github.com/Awes0me-12/awes0me-12.github.io">Source code on GitHub</a></dd>
+            </div>
+          </dl>
+        </article>
+      </div>
+    </div>
   </main>
 
   <footer class="site-footer">

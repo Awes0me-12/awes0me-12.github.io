@@ -13,10 +13,16 @@ Live site: https://awes0me-12.github.io
 | `creative.html` | Documentary, field photography, social media samples |
 | `about.html` | Bio, education and courses, skills, contact |
 | `404.html` | "Page not found", shown by GitHub Pages at any missing address (links start with `/`) |
-| `style.css` | One shared stylesheet for every page |
+| `style.css` | Base styles used by every page |
+| `portfolio.css` | Shared typography, navigation, footer, and visual foundation for all five pages |
+| `home.css` | Home work previews and introductory layout |
+| `projects.css` | Projects contents navigation, write-ups, and responsive reading layout |
+| `creative.css` | Documentary feature, uncropped fieldwork images, and responsive photography gallery |
+| `about.css` | Bio and education layout, skills groups, and contact details |
+| `fonts/` | Locally hosted IBM Plex Sans Latin1 fonts and their SIL OFL license |
 | `images/` | Web-sized images only; originals stay outside the public repository |
 
-Built with plain HTML and one CSS file. No JavaScript, frameworks, or build step.
+Built with plain HTML, shared CSS, and page-specific styles. No JavaScript, frameworks, or build step.
 
 ## Preview locally
 

@@ -1,0 +1,174 @@
+/* Real fieldwork photography leads; all frames keep their original proportions. */
+.page-creative :is(section, .documentary-intro, figure) {
+  min-width: 0;
+}
+
+.page-creative section {
+  scroll-margin-top: 1.5rem;
+}
+
+.page-creative h2 {
+  margin: 0 0 1rem;
+  font-size: 1.75rem;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.page-creative .documentary-intro h2 {
+  max-width: 23ch;
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.page-creative .documentary-intro [lang="zh-Hant"] {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.8em;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+.page-creative .documentary-intro p {
+  margin: 1rem 0 0;
+}
+
+.page-creative .documentary-intro .documentary-watch {
+  margin: 1.75rem 0 0;
+  font-weight: 500;
+}
+
+.page-creative .documentary-watch a {
+  text-underline-offset: 0.2em;
+}
+
+.page-creative .documentary-main-photo {
+  margin-top: 2rem;
+}
+
+.page-creative img {
+  width: 100%;
+  height: auto;
+  border-radius: 3px;
+}
+
+.page-creative figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.page-creative .documentary-info {
+  display: block;
+  margin: 2.5rem 0 0;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.page-creative .documentary-info > div + div {
+  margin-top: 1rem;
+}
+
+.page-creative .documentary-info dt {
+  margin-bottom: 0.25rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.page-creative .documentary-info dd {
+  max-width: 68ch;
+}
+
+.page-creative .documentary-fieldwork {
+  margin-top: 2.5rem;
+}
+
+.page-creative .documentary-fieldwork h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.25rem;
+  letter-spacing: -0.015em;
+}
+
+.page-creative .documentary-fieldwork p {
+  margin: 0 0 1.5rem;
+}
+
+.page-creative .documentary-support-photo {
+  max-width: 36rem;
+}
+
+/* Override the legacy direct-figure rule without changing other pages. */
+.page-creative #documentary > .documentary-title-card {
+  max-width: 42rem;
+  margin: 2.5rem 0 0;
+}
+
+.page-creative #documentary > .documentary-title-card img {
+  border: 0;
+  border-radius: 3px;
+}
+
+.page-creative :is(#photography, #social) {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--border);
+}
+
+.page-creative #photography > p {
+  margin: 0 0 2rem;
+}
+
+.page-creative .photo-grid {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+}
+
+.page-creative .photo-grid img {
+  border-radius: 3px;
+  outline: 0;
+}
+
+@media (min-width: 48rem) {
+  .page-creative #photography .photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .page-creative .documentary-info > div {
+    display: grid;
+    grid-template-columns: 6rem minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  .page-creative .documentary-info dt {
+    margin: 0;
+    line-height: 1.85;
+  }
+}
+
+@media (min-width: 64rem) {
+  .page-creative .documentary-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: start;
+    gap: 3rem;
+  }
+
+  .page-creative .documentary-main-photo {
+    margin: 0;
+  }
+}
+
+@media (max-width: 52rem) {
+  .page-creative h2 {
+    font-size: 1.5rem;
+  }
+
+  .page-creative .documentary-intro h2 {
+    font-size: 1.75rem;
+  }
+
+  .page-creative :is(#photography, #social) {
+    margin-top: 3rem;
+    padding-top: 2rem;
+  }
+}

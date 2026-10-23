@@ -11,9 +11,13 @@
   <meta property="og:description" content="Documentary film, field photography, and social media graphics by Kevin Yang.">
   <meta property="og:url" content="https://awes0me-12.github.io/creative.html">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/IBMPlexSans-Regular-Latin1.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/IBMPlexSans-SemiBold-Latin1.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="portfolio.css">
+  <link rel="stylesheet" href="creative.css">
 </head>
-<body>
+<body class="portfolio page-creative">
   <a class="skip-link" href="#main">Skip to main content</a>
 
   <header class="site-header">
@@ -31,47 +35,54 @@
   </header>
 
   <main id="main" class="container">
-    <h1>Creative Work</h1>
+    <header class="page-intro">
+      <h1>Creative Work</h1>
+    </header>
 
     <section id="documentary">
-      <h2>Documentary: Facial Tattoos – Qiu People <span lang="zh-Hant">紋面·俅人</span></h2>
-      <!-- DRAFT: rewrite in your own words. -->
-      <p>A short documentary about the Qiu people, a historical name for the Dulong ethnic group, and their tradition of facial tattoos, filmed in the mountains of Yunnan, China, near the border with Myanmar. I did the field photography and organized the footage, images, and writing into a narrative.</p>
-      <figure>
-        <img src="images/2025-03-10_creative_qiuren-title-card_v01.jpg" width="1280" height="518" alt="Title card reading 紋面·俅人, Facial tattoos – Qiu people, with a line explaining that the Qiu live beyond the snow mountains of the Lancang River and that Qiu refers to the Dulong ethnic group.">
-        <figcaption>The film's opening title card, in Chinese and English.</figcaption>
-      </figure>
-      <dl class="info">
-        <dt>Format</dt><dd>Short documentary, 2 min 40 s</dd>
-        <dt>Made</dt><dd>December 2023 – June 2024 &middot; Yunnan, China, near the Myanmar border</dd>
-        <dt>My roles</dt><dd>Producer, photographer, editor</dd>
-        <dt>Subtitles</dt><dd>Chinese and English, shown on screen</dd>
-        <dt>Reach</dt><dd>About 3,000 views across Douyin, Bilibili, and RedNote</dd>
-      </dl>
-      <p><a href="https://youtu.be/jNTR_IRTE6E">Watch the documentary on YouTube (2 min 40 s, with English subtitles)</a></p>
-
-      <h3>From the fieldwork</h3>
-      <p>Two of my photographs from filming in December 2023, shared with the permission of the people in them.</p>
-      <div class="photo-grid">
-        <figure>
-          <img src="images/2023-12-26_creative_weaving-at-the-loom_v01.jpg" width="1600" height="1067" loading="lazy" decoding="async"
+      <div class="documentary-hero">
+        <div class="documentary-intro">
+          <h2>Documentary: Facial Tattoos – Qiu People <span lang="zh-Hant">紋面·俅人</span></h2>
+          <!-- DRAFT: rewrite in your own words. -->
+          <p>A short documentary about the Qiu people, a historical name for the Dulong ethnic group, and their tradition of facial tattoos, filmed in the mountains of Yunnan, China, near the border with Myanmar.</p>
+          <p>I did the field photography and organized the footage, images, and writing into a narrative.</p>
+          <p class="documentary-watch"><a href="https://youtu.be/jNTR_IRTE6E">Watch the documentary on YouTube (2 min 40 s, with English subtitles)</a></p>
+        </div>
+        <figure class="documentary-main-photo">
+          <img src="images/2023-12-26_creative_weaving-at-the-loom_v01.jpg" width="1600" height="1067" decoding="async" fetchpriority="high"
                alt="Elderly woman with facial tattoos, in a rainbow-striped jacket and grey cap, weaving brightly colored threads on a wooden loom">
           <figcaption>At the Loom &middot; Yunnan &middot; 2023
             <span class="credit">Photo: Kaixun Yang</span></figcaption>
         </figure>
-        <figure>
+      </div>
+      <dl class="info documentary-info">
+        <div><dt>Format</dt><dd>Short documentary, 2 min 40 s</dd></div>
+        <div><dt>Made</dt><dd>December 2023 – June 2024 &middot; Yunnan, China, near the Myanmar border</dd></div>
+        <div><dt>My roles</dt><dd>Producer, photographer, editor</dd></div>
+        <div><dt>Subtitles</dt><dd>Chinese and English, shown on screen</dd></div>
+        <div><dt>Reach</dt><dd>About 3,000 views across Douyin, Bilibili, and RedNote</dd></div>
+      </dl>
+
+      <div class="documentary-fieldwork">
+        <h3>From the fieldwork</h3>
+        <p>Two of my photographs from filming in December 2023, shared with the permission of the people in them.</p>
+        <figure class="documentary-support-photo">
           <img src="images/2023-12-26_creative_by-the-hearth_v01.jpg" width="1600" height="1067" loading="lazy" decoding="async"
                alt="Elderly woman with facial tattoos, in a beaded striped headscarf and necklaces, smiling beside a hearth with an iron trivet and kettle">
           <figcaption>By the Hearth &middot; Yunnan &middot; 2023
             <span class="credit">Photo: Kaixun Yang</span></figcaption>
         </figure>
       </div>
+      <figure class="documentary-title-card">
+        <img src="images/2025-03-10_creative_qiuren-title-card_v01.jpg" width="1280" height="518" loading="lazy" decoding="async" alt="Title card reading 紋面·俅人, Facial tattoos – Qiu people, with a line explaining that the Qiu live beyond the snow mountains of the Lancang River and that Qiu refers to the Dulong ethnic group.">
+        <figcaption>The film's opening title card, in Chinese and English.</figcaption>
+      </figure>
     </section>
 
     <section id="photography">
       <h2>Field Photography</h2>
       <p>Six photographs &middot; Yunnan, China &middot; June 2023, taken on a children's charity project trip.</p>
-      <!-- Web-sized copies in images/ (1600 px wide, under ~250 KB, no location data). Only the first image on the page (the title card) is not lazy-loaded. -->
+      <!-- Web-sized copies in images/ (1600 px wide, under ~250 KB, no location data). Only the main fieldwork photograph above is not lazy-loaded. -->
       <div class="photo-grid">
         <figure>
           <img src="images/2023-06-24_creative_temple-at-dusk_v01.jpg" width="1600" height="900" loading="lazy" decoding="async"

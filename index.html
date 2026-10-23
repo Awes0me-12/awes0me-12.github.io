@@ -11,9 +11,13 @@
   <meta property="og:description" content="Portfolio of Kaixun (Kevin) Yang, a Statistics and Data Science student at UC Santa Barbara: data projects, documentary film, and photography.">
   <meta property="og:url" content="https://awes0me-12.github.io/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/IBMPlexSans-Regular-Latin1.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/IBMPlexSans-SemiBold-Latin1.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="portfolio.css">
+  <link rel="stylesheet" href="home.css">
 </head>
-<body>
+<body class="portfolio page-home">
   <a class="skip-link" href="#main">Skip to main content</a>
 
   <header class="site-header">
@@ -34,22 +38,36 @@
     <section class="intro">
       <h1>Kaixun (Kevin) Yang</h1>
       <p class="lead">Statistics and Data Science student at UC Santa Barbara</p>
-      <!-- DRAFT: rewrite these two sentences in your own words. -->
-      <p>I use Python and data analysis to turn messy data into clear takeaways, from a marketing dashboard during my internship at Honor to a silver medal on Kaggle. I also produce documentary film and photography, and I built and maintain this site.</p>
+      <!-- DRAFT: confirm this personal introduction sounds like you. -->
+      <p>I grew up in Shenzhen, spent several years living and studying in Hong Kong and Beijing, and now study in Santa Barbara. I enjoy finding patterns in numbers and telling stories with a camera. Here you’ll find a few things I’ve made and explored, from data and research to documentary film and photography.</p>
     </section>
 
     <section aria-labelledby="featured-heading">
       <h2 id="featured-heading">Featured work</h2>
-      <ul class="card-grid">
-        <li class="card">
+      <ul class="featured-grid" role="list">
+        <li class="featured-work featured-work--data">
+          <figure class="work-figure">
+            <div class="work-image work-image--chart">
+              <img src="images/2026-10-21_projects_kaggle-score-by-stage_v01.png" width="1560" height="637" decoding="async"
+                   alt="Two charts from one practice run: the total score falls from 175.1 to 136.5 to 130.1 through optimization, with improvements across puzzle sizes 1 to 200. Lower is better.">
+            </div>
+            <figcaption>Optimization stages in one practice run. Not the final leaderboard submission.</figcaption>
+          </figure>
           <h3><a href="projects.html#kaggle">Kaggle Silver Medal</a></h3>
           <p>I led a team and built its Python optimization pipeline for the Santa 2025 packing challenge, finishing in the top 3.3% of 3,357 teams.</p>
         </li>
-        <li class="card">
+        <li class="featured-work featured-work--film">
+          <figure class="work-figure">
+            <div class="work-image">
+              <img src="images/2023-12-26_creative_weaving-at-the-loom_v01.jpg" width="1600" height="1067" loading="lazy" decoding="async"
+                   alt="Woman with facial tattoos in a colorful striped jacket weaving at a wooden loom, photographed during documentary fieldwork in Yunnan.">
+            </div>
+            <figcaption>Documentary fieldwork in Yunnan, December 2023. Photo: Kaixun Yang.</figcaption>
+          </figure>
           <h3><a href="creative.html#documentary">Documentary: Facial Tattoos – Qiu People</a></h3>
           <p>A short film on the Dulong people's facial-tattoo tradition that I produced, photographed, and edited.</p>
         </li>
-        <li class="card">
+        <li class="featured-work featured-work--site">
           <h3><a href="projects.html#this-site">Building this site</a></h3>
           <p>How I built this site with HTML and CSS, and the checks I ran.</p>
         </li>
