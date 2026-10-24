@@ -1,5 +1,5 @@
 /* Real fieldwork photography leads; all frames keep their original proportions. */
-.page-creative :is(section, .documentary-intro, figure) {
+.page-creative :is(section, .documentary-hero, .documentary-copy, figure) {
   min-width: 0;
 }
 
@@ -14,13 +14,19 @@
   text-wrap: balance;
 }
 
-.page-creative .documentary-intro h2 {
+.page-creative .documentary-hero {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.page-creative .documentary-heading {
   max-width: 23ch;
+  margin: 0;
   font-size: 2rem;
   line-height: 1.2;
 }
 
-.page-creative .documentary-intro [lang="zh-Hant"] {
+.page-creative .documentary-heading [lang="zh-Hant"] {
   display: block;
   margin-top: 0.5rem;
   font-size: 0.8em;
@@ -28,12 +34,16 @@
   letter-spacing: 0;
 }
 
-.page-creative .documentary-intro p {
-  margin: 1rem 0 0;
+.page-creative .documentary-copy p {
+  margin: 0;
 }
 
-.page-creative .documentary-intro .documentary-watch {
-  margin: 1.75rem 0 0;
+.page-creative .documentary-copy p + p {
+  margin-top: 1rem;
+}
+
+.page-creative .documentary-watch {
+  margin: 0;
   font-weight: 500;
 }
 
@@ -42,7 +52,7 @@
 }
 
 .page-creative .documentary-main-photo {
-  margin-top: 2rem;
+  margin: 0;
 }
 
 .page-creative img {
@@ -131,6 +141,11 @@
 @media (min-width: 48rem) {
   .page-creative #photography .photo-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 3rem;
+  }
+
+  .page-creative #photography .photo-grid > figure:is(:first-child, :last-child) {
+    grid-column: 1 / -1;
   }
 
   .page-creative .documentary-info > div {
@@ -147,14 +162,30 @@
 
 @media (min-width: 64rem) {
   .page-creative .documentary-hero {
-    display: grid;
     grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-areas:
+      "heading photo"
+      "watch photo"
+      "copy photo";
+    grid-template-rows: max-content max-content 1fr;
     align-items: start;
-    gap: 3rem;
+    column-gap: 3rem;
+  }
+
+  .page-creative .documentary-heading {
+    grid-area: heading;
   }
 
   .page-creative .documentary-main-photo {
-    margin: 0;
+    grid-area: photo;
+  }
+
+  .page-creative .documentary-watch {
+    grid-area: watch;
+  }
+
+  .page-creative .documentary-copy {
+    grid-area: copy;
   }
 }
 
@@ -163,7 +194,7 @@
     font-size: 1.5rem;
   }
 
-  .page-creative .documentary-intro h2 {
+  .page-creative .documentary-heading {
     font-size: 1.75rem;
   }
 

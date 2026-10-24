@@ -49,6 +49,17 @@
   max-width: none;
 }
 
+.page-home .featured-work:not(.featured-work--site) {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+}
+
+.page-home .work-figure {
+  margin: 0;
+  align-self: start;
+}
+
 .page-home .work-image {
   overflow: hidden;
   border: 1px solid transparent;
@@ -73,7 +84,7 @@
 }
 
 .page-home .featured-work h3 {
-  margin: 1.25rem 0 0.625rem;
+  margin: 0;
   font-size: 1.5rem;
   line-height: 1.25;
   letter-spacing: -0.02em;
@@ -85,6 +96,19 @@
   text-decoration-color: var(--border);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
+}
+
+.page-home .featured-work:not(.featured-work--site) h3 a {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.page-home .work-arrow {
+  display: inline-block;
+  font-size: 0.9em;
+  font-weight: 400;
 }
 
 /* One title link makes the entire work entry clickable without extra Tab stops. */
@@ -136,6 +160,17 @@
   color: var(--muted);
 }
 
+/* Shared tracks align titles and preview starts without resizing either image. */
+@supports (grid-template-rows: subgrid) {
+  @media (min-width: 45.0625rem) {
+    .page-home .featured-work:not(.featured-work--site) {
+      grid-row: span 3;
+      grid-template-rows: subgrid;
+      align-self: stretch;
+    }
+  }
+}
+
 @media (max-width: 45rem) {
   .page-home .intro {
     margin: 2.75rem 0 2.75rem;
@@ -160,5 +195,13 @@
 @media (prefers-reduced-motion: no-preference) {
   .page-home .work-image {
     transition: border-color 160ms ease;
+  }
+
+  .page-home .work-arrow {
+    transition: transform 160ms ease;
+  }
+
+  .page-home .featured-work:is(:hover, :focus-within) .work-arrow {
+    transform: translateX(3px);
   }
 }
