@@ -154,6 +154,48 @@
   margin-top: 0.5rem;
 }
 
+/* Keep the maintenance overview short, with the full notes one native toggle away. */
+.page-projects .site-details {
+  max-width: 66ch;
+  margin-top: 1.75rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.page-projects .site-details > summary {
+  min-height: 2.75rem;
+  padding: 0.875rem 0;
+  color: var(--accent);
+  font-weight: 500;
+  line-height: 1.45;
+  list-style-position: inside;
+  cursor: pointer;
+}
+
+.page-projects .site-details > summary::marker {
+  color: var(--accent);
+}
+
+.page-projects .site-details > summary:is(:hover, :focus-visible) {
+  color: var(--accent-hover);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.page-projects .site-details > summary:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.page-projects .site-details-content {
+  padding: 0.75rem 0 1.5rem;
+}
+
+.page-projects .site-details-content > .case-section:first-child {
+  margin-top: 0;
+}
+
 .page-projects .case-section--links {
   margin-top: 1.75rem;
 }

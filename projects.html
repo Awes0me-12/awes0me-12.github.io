@@ -130,8 +130,8 @@ else:
             <p>Campaign analysis:</p>
             <ul>
               <li>Cleaned and validated raw campaign data, resolving errors and inconsistencies.</li>
-              <li>Tracked ADVPU, ROI, DTR and CVR, and shallow- and deep-funnel conversion rates.</li>
-              <li>Checked prediction bias with PCOC and PVOV.</li>
+              <li>Tracked ADVPU (overall advertiser value), ROI (return on investment), DTR (direct transfer rate) and CVR (conversion rate), along with shallow- and deep-funnel conversion rates.</li>
+              <li>Checked prediction bias with PCOC (Predict Click Over Click: predicted / observed click-through rate) and PVOV (Predicted Value Over Value).</li>
               <li>Compared strategies with head-to-head ("horse race") tests and A/B experiments, using p-values to judge whether differences were statistically significant.</li>
             </ul>
             <p>AI data tool:</p>
@@ -279,40 +279,55 @@ else:
             <p>My part: I planned, built, and maintain this site, using AI coding assistants to help draft code and run checks.</p>
           </div>
 
-          <section class="case-section case-section--result">
-            <h3>Checks and results</h3>
-            <p>For the current site, I checked phone-sized and desktop browser layouts, keyboard navigation, 200% and 400% browser zoom, text spacing, reduced motion, font fallbacks, and project links. All five pages pass the local Nu HTML Checker with no errors; Home retains one intentional list-role warning. I also checked the main desktop navigation in Safari.</p>
-            <p>Baseline checks before this visual redesign, run locally on <time datetime="2026-10-22">October 22, 2026</time>:</p>
+          <section class="case-section case-section--overview">
+            <h3>Updates and checks</h3>
+            <p>After launch, I clarified the Kaggle task and our team's contribution, corrected a broken link, and checked the changes on the live site.</p>
             <ul>
-              <li>All five pages, including the 404 page, pass the W3C HTML validator with 0 errors and 0 warnings.</li>
-              <li>All 62 local link and resource references resolve, including links to sections within pages.</li>
-              <li>All 12 images have alt text and dimensions, are 1600 px or less on the long edge and under 250 KB, and contain no EXIF data.</li>
-              <li>Text colors measure at least 6.4:1 against their backgrounds (the WCAG AA minimum is 4.5:1).</li>
-              <li>All five pages fit a 375 px phone viewport and a desktop browser at 200% zoom without sideways scrolling. Keyboard focus is visible on links, cards, and the code box.</li>
+              <li>Checked narrow and desktop layouts, keyboard navigation, and browser zoom up to 400%.</li>
+              <li>Reviewed links, image descriptions, and text contrast.</li>
+              <li>All five pages pass local HTML validation with no errors.</li>
             </ul>
-            <p>Separate checks of the published version on the same date found HTTP 200 responses for its five pages, stylesheet, favicon, and 12 images. Missing addresses such as <code>/nope</code> and <code>/a/b/c</code> returned the custom page with HTTP 404.</p>
-            <p>Five of the six distinct external links returned HTTP 200, and the Kaggle leaderboard also loaded the team's result in a browser. LinkedIn returned HTTP 999, blocking the automated check; that profile still needs a manual check.</p>
-            <p>On <time datetime="2026-10-23">October 23, 2026</time>, I ran mobile Lighthouse performance audits on the four main pages. These were single laboratory runs; they do not measure every visitor's experience.</p>
             <p>Known issues: I have not yet tested with a screen reader. If something doesn't work for you, please <a href="mailto:kaixun1210@gmail.com">email me</a>.</p>
           </section>
 
-          <section class="case-section case-section--purpose">
-            <h3>The brief</h3>
-            <!-- DRAFT: rewrite in your own words. -->
-            <p>Give reviewers a site they can skim in a minute or two on a phone or a desktop, with every claim easy to check.</p>
-          </section>
+          <details class="site-details">
+            <summary>Detailed checks and build notes</summary>
+            <div class="site-details-content">
+              <section class="case-section case-section--result">
+                <h3>Checks and results</h3>
+                <p>For the current site, I checked phone-sized and desktop browser layouts, keyboard navigation, 200% and 400% browser zoom, text spacing, reduced motion, font fallbacks, and project links. All five pages pass the local Nu HTML Checker with no errors; Home retains one intentional list-role warning. I also checked the main desktop navigation in Safari.</p>
+                <p>Baseline checks before this visual redesign, run locally on <time datetime="2026-10-22">October 22, 2026</time>:</p>
+                <ul>
+                  <li>All five pages, including the 404 page, pass the W3C HTML validator with 0 errors and 0 warnings.</li>
+                  <li>All 62 local link and resource references resolve, including links to sections within pages.</li>
+                  <li>All 12 images have alt text and dimensions, are 1600 px or less on the long edge and under 250 KB, and contain no EXIF data.</li>
+                  <li>Text colors measure at least 6.4:1 against their backgrounds (the WCAG AA minimum is 4.5:1).</li>
+                  <li>All five pages fit a 375 px phone viewport and a desktop browser at 200% zoom without sideways scrolling. Keyboard focus is visible on links, cards, and the code box.</li>
+                </ul>
+                <p>Separate checks of the published version on the same date found HTTP 200 responses for its five pages, stylesheet, favicon, and 12 images. Missing addresses such as <code>/nope</code> and <code>/a/b/c</code> returned the custom page with HTTP 404.</p>
+                <p>Five of the six distinct external links returned HTTP 200, and the Kaggle leaderboard also loaded the team's result in a browser. LinkedIn returned HTTP 999, blocking the automated check; that profile still needs a manual check.</p>
+                <p>On <time datetime="2026-10-23">October 23, 2026</time>, I ran mobile Lighthouse performance audits on the four main pages. These were single laboratory runs; they do not measure every visitor's experience.</p>
+              </section>
 
-          <section class="case-section case-section--method">
-            <h3>Build and maintenance</h3>
-            <ul>
-              <li>Hosting: GitHub Pages, with version control in Git.</li>
-              <li>Code: plain HTML with a shared base stylesheet and page-specific CSS, with no JavaScript, analytics, tracking, or cookies.</li>
-              <li>Layout: four pages with the same navigation. Projects has a contents column on wide screens and a single column on smaller screens, with consistent role, result, purpose, method, and Link sections for every project.</li>
-              <li>Images: a long edge of 1600 px or less, under 250 KB, location data removed, and named <code>YYYY-MM-DD_topic_description_v01</code>.</li>
-              <li>Records: a naming guide and a tracker with a content inventory and change log, kept in Google Drive. The inventory maps source files to web-ready copies.</li>
-              <li>Maintenance: after launch, I clarified the Kaggle task and the team's contribution and replaced an invalid link. I use a private tracker to record problems, changes, and verification, and compare local and published pages when checking a release.</li>
-            </ul>
-          </section>
+              <section class="case-section case-section--purpose">
+                <h3>The brief</h3>
+                <!-- DRAFT: rewrite in your own words. -->
+                <p>Give reviewers a site they can skim in a minute or two on a phone or a desktop, with every claim easy to check.</p>
+              </section>
+
+              <section class="case-section case-section--method">
+                <h3>Build and maintenance</h3>
+                <ul>
+                  <li>Hosting: GitHub Pages, with version control in Git.</li>
+                  <li>Code: plain HTML with a shared base stylesheet and page-specific CSS, with no JavaScript, analytics, tracking, or cookies.</li>
+                  <li>Layout: four pages with the same navigation. Projects has a contents column on wide screens and a single column on smaller screens, with consistent role, result, purpose, method, and Link sections for every project.</li>
+                  <li>Images: a long edge of 1600 px or less, under 250 KB, location data removed, and named <code>YYYY-MM-DD_topic_description_v01</code>.</li>
+                  <li>Records: a naming guide and a tracker with a content inventory and change log, kept in Google Drive. The inventory maps source files to web-ready copies.</li>
+                  <li>Maintenance: after launch, I clarified the Kaggle task and the team's contribution and replaced an invalid link. I use a private tracker to record problems, changes, and verification, and compare local and published pages when checking a release.</li>
+                </ul>
+              </section>
+            </div>
+          </details>
 
           <section class="case-section case-section--links">
             <h3>Source code</h3>
