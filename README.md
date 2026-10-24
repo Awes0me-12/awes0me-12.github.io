@@ -24,6 +24,8 @@ Live site: https://awes0me-12.github.io
 
 Built with plain HTML, shared CSS, and page-specific styles. No JavaScript, frameworks, or build step.
 
+Shared CSS adds a brief native page fade on supported same-origin navigations, respecting the system's reduced-motion preference. Ordinary navigation works without the enhancement.
+
 ## Preview locally
 
 From this folder, run:

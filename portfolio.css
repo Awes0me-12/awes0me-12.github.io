@@ -146,3 +146,33 @@
     transition: color 140ms ease, text-decoration-color 140ms ease;
   }
 }
+
+/* Native page snapshots only; ordinary links and visible content work without it. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+
+  ::view-transition-group(root) {
+    animation: none;
+  }
+
+  /* Keep the old page opaque beneath the incoming page to avoid a white flash. */
+  ::view-transition-old(root) {
+    animation: none;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    mix-blend-mode: normal;
+  }
+
+  ::view-transition-new(root) {
+    animation: portfolio-page-in 180ms ease-out both;
+  }
+
+  @keyframes portfolio-page-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
