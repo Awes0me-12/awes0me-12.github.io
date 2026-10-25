@@ -49,6 +49,11 @@
   letter-spacing: -0.025em;
 }
 
+/* Above the sticky header, so it is seen when focused. */
+.portfolio .skip-link {
+  z-index: 30;
+}
+
 .portfolio .skip-link:is(:hover, :focus-visible) {
   color: var(--on-accent);
 }
