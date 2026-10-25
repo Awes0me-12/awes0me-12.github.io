@@ -1,13 +1,13 @@
 /* Reading layout for Projects; typography and navigation use portfolio.css. */
 .page-projects .projects-intro {
-  margin: 3.5rem 0 2.75rem;
+  margin: 4rem 0 2.75rem;
 }
 
 .page-projects h1 {
   margin: 0 0 0.75rem;
-  font-size: 2.5rem;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
+  font-size: clamp(2.5rem, 1.75rem + 2.5vw, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
 }
 
 .page-projects .projects-intro .lead {
@@ -22,75 +22,86 @@
   min-width: 0;
 }
 
+/* ---------- Contents: full rows on smaller screens, a sticky column on wide ones ---------- */
 .page-projects .project-index {
-  margin-bottom: 2.75rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border);
+  margin-bottom: 2.5rem;
 }
 
 .page-projects .project-index h2 {
-  margin: 0 0 0.5rem;
-  color: var(--muted);
-  font-size: 0.9375rem;
-  font-weight: 500;
-  line-height: 1.5;
+  margin: 0 0 0.75rem;
 }
 
 .page-projects .project-index ul {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0 1.25rem;
   margin: 0;
   padding: 0;
   list-style: none;
+  border-top: 1px solid var(--border);
   font-size: 0.96875rem;
 }
 
 .page-projects .project-index li {
   max-width: none;
   min-width: 0;
+  border-bottom: 1px solid var(--border);
 }
 
 .page-projects .project-index a {
   position: relative;
-  display: block;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 0.125rem 1.5rem;
   min-height: 2.75rem;
-  padding: 0.5rem 0;
-  color: var(--muted);
-  text-decoration-color: transparent;
-  text-underline-offset: 0.2em;
+  padding: 0.75rem;
+  color: var(--text);
+  text-decoration: none;
   line-height: 1.45;
+}
+
+.page-projects .index-title {
+  font-weight: 500;
+}
+
+.page-projects .index-meta {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.page-projects .index-arrow {
+  color: var(--muted);
 }
 
 .page-projects .project-index a:is(:hover, :focus-visible) {
   color: var(--accent);
-  text-decoration-color: currentColor;
 }
 
+/* ---------- Each project is its own raised panel ---------- */
 .page-projects .project {
   margin: 0;
-  border: 0;
+  padding: 2.5rem 2.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
   scroll-margin-top: 1.5rem;
 }
 
 .page-projects .project + .project {
-  margin-top: 4rem;
-  padding-top: 3rem;
-  border-top: 1px solid var(--border);
+  margin-top: 2rem;
 }
 
 .page-projects .project h2 {
   position: relative;
-  margin: 0 0 0.75rem;
-  font-size: 1.75rem;
+  margin: 0 0 0.625rem;
+  font-size: 1.875rem;
   line-height: 1.2;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
   text-wrap: balance;
 }
 
 .page-projects .project h3 {
-  margin: 2rem 0 0.75rem;
-  font-size: 1.25rem;
+  margin: 2.25rem 0 0.75rem;
+  font-size: 1.1875rem;
   letter-spacing: -0.015em;
 }
 
@@ -106,17 +117,33 @@
   line-height: 1.55;
 }
 
+/* Confidentiality note inside a panel */
+.page-projects .project .note {
+  max-width: 66ch;
+  background: var(--surface-sunken);
+  border-left-color: var(--muted);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+/* My role: an accent callout right under the summary */
 .page-projects .project-role {
   max-width: 66ch;
-  margin: 1.75rem 0 2.25rem;
+  margin: 1.5rem 0 2.25rem;
+  padding: 1rem 1.25rem;
+  background: var(--background);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
 }
 
 .page-projects .project-role h3 {
-  margin: 0 0 0.5rem;
-  color: var(--muted);
-  font-size: 0.9375rem;
-  line-height: 1.5;
-  letter-spacing: 0;
+  margin: 0 0 0.375rem;
+  color: var(--accent);
+}
+
+/* Restate the shared label size, which .project h3 would otherwise override. */
+.page-projects .project :is(.project-role, .case-section--links) h3 {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
 }
 
 .page-projects .project-role p {
@@ -125,7 +152,7 @@
 }
 
 .page-projects .case-section {
-  margin-top: 2rem;
+  margin-top: 2.25rem;
 }
 
 .page-projects .case-section h3 {
@@ -154,26 +181,85 @@
   margin-top: 0.5rem;
 }
 
+/* Result: the outcome a skimming reader needs, on an indigo tint */
+.page-projects .case-section--result {
+  max-width: calc(66ch + 3rem);
+  padding: 1.25rem 1.5rem;
+  background: var(--surface-accent);
+  border-radius: var(--radius);
+}
+
+.page-projects .case-section--result h3 {
+  color: var(--accent);
+}
+
+/* Method: steps marked in the accent color, set off by a rule */
+.page-projects .case-section--method {
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--border);
+}
+
+.page-projects .case-section--method ul {
+  list-style-type: square;
+}
+
+.page-projects .case-section--method li::marker {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Links: a quiet footer for each project */
+.page-projects .case-section--links {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.page-projects .case-section--links h3 {
+  margin-bottom: 0.25rem;
+}
+
 /* Keep the maintenance overview short, with the full notes one native toggle away. */
 .page-projects .site-details {
   max-width: 66ch;
   margin-top: 1.75rem;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
 }
 
 .page-projects .site-details > summary {
+  position: relative;
   min-height: 2.75rem;
-  padding: 0.875rem 0;
+  padding: 0.875rem 3rem 0.875rem 1.25rem;
   color: var(--accent);
   font-weight: 500;
   line-height: 1.45;
-  list-style-position: inside;
+  list-style: none;
   cursor: pointer;
 }
 
-.page-projects .site-details > summary::marker {
-  color: var(--accent);
+.page-projects .site-details > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* A drawn chevron replaces the marker: down when closed, up when open. */
+.page-projects .site-details > summary::after {
+  position: absolute;
+  top: 50%;
+  right: 1.375rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-top: -0.375rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  content: "";
+}
+
+.page-projects .site-details[open] > summary::after {
+  margin-top: -0.125rem;
+  transform: rotate(-135deg);
 }
 
 .page-projects .site-details > summary:is(:hover, :focus-visible) {
@@ -184,27 +270,16 @@
 
 .page-projects .site-details > summary:focus-visible {
   outline: 3px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: 2px;
+  outline-offset: 2px;
+  border-radius: var(--radius);
 }
 
 .page-projects .site-details-content {
-  padding: 0.75rem 0 1.5rem;
+  padding: 0.25rem 1.25rem 1.5rem;
 }
 
 .page-projects .site-details-content > .case-section:first-child {
   margin-top: 0;
-}
-
-.page-projects .case-section--links {
-  margin-top: 1.75rem;
-}
-
-.page-projects .case-section--links h3 {
-  color: var(--muted);
-  font-size: 0.9375rem;
-  line-height: 1.5;
-  letter-spacing: 0;
 }
 
 .page-projects :where(.project) p {
@@ -218,7 +293,8 @@
 .page-projects .project figure img {
   width: 100%;
   height: auto;
-  border-radius: 3px;
+  padding: 0.75rem;
+  border-radius: var(--radius);
   background: var(--figure-background);
 }
 
@@ -232,15 +308,21 @@
 .page-projects pre {
   margin-top: 1rem;
   padding: 1.25rem;
-  border-radius: 4px;
+  background: var(--surface-sunken);
+  border-color: transparent;
+  border-radius: var(--radius);
 }
 
 /* Fragment links locate a heading without hiding or moving any content. */
+.page-projects .project:target {
+  border-color: var(--accent);
+}
+
 .page-projects .project:target > h2::before {
   position: absolute;
   top: 0.1em;
   bottom: 0.1em;
-  left: -0.75rem;
+  left: -1.25rem;
   width: 3px;
   background: var(--accent);
   content: "";
@@ -249,19 +331,27 @@
 @media (min-width: 64rem) {
   .page-projects .projects-layout {
     display: grid;
-    grid-template-columns: 10rem minmax(0, 1fr);
-    gap: 3rem;
+    grid-template-columns: 13rem minmax(0, 1fr);
+    gap: 2.5rem;
   }
 
   .page-projects .project-index {
     align-self: start;
     margin: 0;
-    padding: 0;
-    border: 0;
   }
 
-  .page-projects .project-index ul {
+  /* In the narrow column each entry stacks its title over its meta line. */
+  .page-projects .project-index a {
     grid-template-columns: minmax(0, 1fr);
+    padding: 0.625rem 0.75rem;
+  }
+
+  .page-projects .index-meta {
+    font-size: 0.8125rem;
+  }
+
+  .page-projects .index-arrow {
+    display: none;
   }
 }
 
@@ -278,11 +368,19 @@
   }
 
   .page-projects h1 {
-    font-size: 2rem;
+    font-size: 2.25rem;
+  }
+
+  .page-projects .project {
+    padding: 1.75rem 1.5rem;
   }
 
   .page-projects .project h2 {
     font-size: 1.5rem;
+  }
+
+  .page-projects .project:target > h2::before {
+    left: -0.875rem;
   }
 }
 
@@ -295,8 +393,7 @@
   .page-projects:has(#research:target) .project-index a[href="#research"],
   .page-projects:has(#this-site:target) .project-index a[href="#this-site"] {
     color: var(--accent);
-    font-weight: 600;
-    text-decoration-color: currentColor;
+    background: var(--surface);
   }
 
   .page-projects:has(#kaggle:target) .project-index a[href="#kaggle"]::before,
@@ -306,18 +403,39 @@
   .page-projects:has(#research:target) .project-index a[href="#research"]::before,
   .page-projects:has(#this-site:target) .project-index a[href="#this-site"]::before {
     position: absolute;
-    top: 0.8rem;
-    left: -0.75rem;
+    top: 0.75rem;
+    bottom: 0.75rem;
+    left: 0;
     width: 3px;
-    height: 1em;
     background: var(--accent);
     content: "";
   }
 }
 
 @media (max-width: 36rem) {
-  .page-projects .project-index ul {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* Title and arrow share the first line; the meta line drops below. */
+  .page-projects .project-index a {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .page-projects .index-meta {
+    grid-row: 2;
+  }
+
+  .page-projects .project {
+    padding: 1.5rem 1.125rem;
+  }
+
+  .page-projects .case-section--result {
+    padding: 1rem 1.125rem;
+  }
+
+  .page-projects .case-section--method {
+    padding-left: 0.875rem;
+  }
+
+  .page-projects .project:target > h2::before {
+    left: -0.625rem;
   }
 }
 

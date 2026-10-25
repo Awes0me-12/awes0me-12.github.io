@@ -26,9 +26,19 @@
   margin-bottom: 0;
 }
 
+/* Education sits in a raised panel beside the bio. */
+.page-about .about-education {
+  padding: 1.5rem 1.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
 .page-about .education-list {
   margin: 0;
-  padding-left: 1.25rem;
+  padding: 0;
+  list-style: none;
 }
 
 .page-about .education-list li {
@@ -36,20 +46,37 @@
 }
 
 .page-about .education-list li + li {
-  margin-top: 1.25rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
 }
 
+.page-about .education-list strong {
+  display: block;
+}
+
+/* ---------- Skills: one card per group ---------- */
 .page-about .about-skills {
-  margin-top: 4rem;
+  margin-top: 4.5rem;
 }
 
 .page-about .skills-grid {
-  gap: 2.25rem 3rem;
+  gap: 1.25rem;
   margin-top: 1.5rem;
 }
 
+.page-about .skill-group {
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
 .page-about .skill-group h3 {
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.875rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
   font-size: 1.125rem;
   line-height: 1.35;
   text-wrap: balance;
@@ -57,6 +84,8 @@
 
 .page-about .skill-list {
   margin: 0;
+  padding-left: 1.125rem;
+  list-style-type: square;
 }
 
 .page-about .skill-list li {
@@ -64,30 +93,47 @@
   margin-bottom: 0;
 }
 
+.page-about .skill-list li::marker {
+  color: var(--accent);
+}
+
 .page-about .skill-list li + li {
   margin-top: 0.5rem;
 }
 
+/* ---------- Contact: an indigo-tinted panel with larger links ---------- */
 .page-about .about-contact {
-  margin-top: 4rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border);
+  margin-top: 4.5rem;
+  padding: 2rem 2.25rem;
+  background: var(--surface-accent);
+  border-radius: var(--radius);
 }
 
 .page-about .about-contact p {
-  margin: 0 0 0.75rem;
+  margin: 0 0 1rem;
 }
 
 .page-about .contact-list {
   margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .page-about .contact-list li {
   max-width: none;
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.page-about .contact-list li + li {
+  margin-top: 0.5rem;
 }
 
 .page-about .contact-list a {
+  font-size: 1.25rem;
+  font-weight: 500;
   overflow-wrap: anywhere;
+  text-underline-offset: 0.2em;
 }
 
 @media (min-width: 48rem) {
@@ -107,8 +153,21 @@
     align-items: start;
   }
 
-  .page-about .about-education {
-    padding-left: 2rem;
-    border-left: 1px solid var(--border);
+  .page-about .skills-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 36rem) {
+  .page-about :is(.about-education, .skill-group) {
+    padding: 1.25rem 1.125rem;
+  }
+
+  .page-about .about-contact {
+    padding: 1.5rem 1.125rem;
+  }
+
+  .page-about .contact-list a {
+    font-size: 1.125rem;
   }
 }

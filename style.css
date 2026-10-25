@@ -17,6 +17,9 @@
   --surface-sunken: #dfdcd4; /* chips, code, callouts inside panels */
   --surface-accent: #dce2eb; /* tinted highlight; accent text is 6.7:1 on it */
   --figure-background: #ffffff; /* behind charts drawn on white */
+  --surface-inverse: #1e1f23; /* dark "cinema" panel for the documentary */
+  --on-inverse: #f4f3ef;    /* text on --surface-inverse, 14.8:1 */
+  --on-inverse-muted: #c4c2bb; /* captions on --surface-inverse, 9.2:1 */
   --header-background: rgb(233 231 225 / 0.92); /* --background, slightly see-through */
   --overlay: rgb(20 21 24 / 0.94); /* photo viewer backdrop */
   --on-overlay: #f4f3ef;    /* text on the overlay, 16.4:1 */
@@ -25,6 +28,7 @@
   --shadow-sm: 0 1px 2px rgb(var(--shadow-color) / 0.08);
   --shadow-md: 0 1px 2px rgb(var(--shadow-color) / 0.06), 0 10px 24px -12px rgb(var(--shadow-color) / 0.28);
   --shadow-lg: 0 2px 4px rgb(var(--shadow-color) / 0.06), 0 24px 48px -20px rgb(var(--shadow-color) / 0.45);
+  --shadow-on-inverse: 0 24px 48px -24px rgb(0 0 0 / 0.7); /* photos inside a dark panel */
   --max-width: 60rem;
   --radius: 4px;            /* panels and cards */
   --radius-sm: 2px;         /* images */
