@@ -173,6 +173,29 @@
   border-color: var(--accent);
 }
 
+/* A deeper shadow waits on a layer of its own, so hover only fades its opacity. */
+.page-home .featured-work::before {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  pointer-events: none;
+  content: "";
+}
+
+.page-home .featured-work:is(:hover, :focus-within) {
+  border-color: var(--border-strong);
+}
+
+.page-home .featured-work:is(:hover, :focus-within)::before {
+  opacity: 1;
+}
+
+.page-home .featured-work:is(:hover, :focus-within) .work-arrow {
+  color: var(--accent);
+}
+
 .page-home .featured-work h3 a:focus-visible {
   outline: none;
 }
@@ -255,14 +278,35 @@
 /* Content is always visible. Only action feedback receives a short transition. */
 @media (prefers-reduced-motion: no-preference) {
   .page-home .work-image {
-    transition: border-color 160ms ease;
+    transition: border-color var(--duration-fast) ease;
   }
 
   .page-home .work-arrow {
-    transition: transform 160ms ease;
+    transition: transform var(--duration-fast) ease;
   }
 
   .page-home .featured-work:is(:hover, :focus-within) .work-arrow {
     transform: translateX(3px);
+  }
+
+  /* Hover lifts the card slightly and eases the preview image in its frame. */
+  .page-home .featured-work {
+    transition: transform var(--duration) var(--ease-out), border-color var(--duration) ease;
+  }
+
+  .page-home .featured-work::before {
+    transition: opacity var(--duration) var(--ease-out);
+  }
+
+  .page-home .work-image img {
+    transition: transform var(--duration-slow) var(--ease-out);
+  }
+
+  .page-home .featured-work:is(:hover, :focus-within) {
+    transform: translateY(-3px);
+  }
+
+  .page-home .featured-work:is(:hover, :focus-within) .work-image img {
+    transform: scale(1.03);
   }
 }

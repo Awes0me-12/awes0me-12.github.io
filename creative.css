@@ -123,6 +123,16 @@
   outline-offset: 3px;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .page-creative .documentary-watch a::before {
+    transition: transform var(--duration) var(--ease-out);
+  }
+
+  .page-creative .documentary-hero .documentary-watch a:is(:hover, :focus-visible)::before {
+    transform: translateX(2px);
+  }
+}
+
 .page-creative .documentary-info {
   display: block;
   margin: 1.5rem 0 0;

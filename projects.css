@@ -72,7 +72,13 @@
 }
 
 .page-projects .project-index a:is(:hover, :focus-visible) {
+  background: var(--surface);
   color: var(--accent);
+}
+
+.page-projects .project-index a:is(:hover, :focus-visible) .index-arrow {
+  color: var(--accent);
+  transform: translateX(3px);
 }
 
 /* ---------- Each project is its own raised panel ---------- */
@@ -331,7 +337,7 @@
 @media (min-width: 64rem) {
   .page-projects .projects-layout {
     display: grid;
-    grid-template-columns: 13rem minmax(0, 1fr);
+    grid-template-columns: 14.5rem minmax(0, 1fr);
     gap: 2.5rem;
   }
 
@@ -358,7 +364,7 @@
 @media (min-width: 64rem) and (min-height: 42rem) {
   .page-projects .project-index {
     position: sticky;
-    top: 1.5rem;
+    top: calc(var(--header-height, 0rem) + 1.5rem);
   }
 }
 
@@ -442,6 +448,14 @@
 @media (prefers-reduced-motion: no-preference) {
   .page-projects .project:target > h2::before {
     animation: project-location 650ms ease-out;
+  }
+
+  .page-projects .project-index a {
+    transition: background-color var(--duration-fast) ease, color var(--duration-fast) ease;
+  }
+
+  .page-projects .index-arrow {
+    transition: transform var(--duration) var(--ease-out);
   }
 }
 

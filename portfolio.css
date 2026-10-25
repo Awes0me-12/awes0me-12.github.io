@@ -71,9 +71,77 @@
 }
 
 .portfolio .nav-list a {
+  position: relative;
   display: inline-block;
   min-height: 2.75rem;
   padding: 0.375rem 0;
+}
+
+/* One bar under each link: full width for the current page, drawn in on hover or focus. */
+.portfolio .nav-list a[aria-current="page"] {
+  border-bottom: 0;
+}
+
+.portfolio .nav-list a::after {
+  position: absolute;
+  right: 0;
+  bottom: 0.25rem;
+  left: 0;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  content: "";
+}
+
+.portfolio .nav-list a:is(:hover, :focus-visible, [aria-current="page"])::after {
+  transform: scaleX(1);
+}
+
+/* The header stays in reach on long pages, only where there is room for it:
+   not on phones, and not at high zoom where it would cover the content. */
+@media (min-width: 45rem) and (min-height: 32rem) {
+  :root {
+    --header-height: 5.375rem;
+    scroll-padding-top: calc(var(--header-height) + 1rem);
+  }
+
+  .portfolio .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--header-background);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+
+  /* A soft shadow below the header fades in over the first few rem of scrolling. */
+  .portfolio .site-header::after {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    height: 0.75rem;
+    background: linear-gradient(rgb(var(--shadow-color) / 0.12), rgb(var(--shadow-color) / 0));
+    opacity: 0;
+    pointer-events: none;
+    content: "";
+  }
+
+  @supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .portfolio .site-header::after {
+        animation: header-shadow linear both;
+        animation-timeline: scroll(root);
+        animation-range: 0 6rem;
+      }
+    }
+  }
+}
+
+@keyframes header-shadow {
+  to { opacity: 1; }
 }
 
 .portfolio .site-footer {
@@ -164,6 +232,10 @@
 @media (prefers-reduced-motion: no-preference) {
   .portfolio a {
     transition: color 140ms ease, text-decoration-color 140ms ease;
+  }
+
+  .portfolio .nav-list a::after {
+    transition: transform var(--duration) var(--ease-out);
   }
 }
 
