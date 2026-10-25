@@ -239,6 +239,26 @@
   }
 }
 
+/* Panels ease in as they scroll into view, driven by scroll position in CSS alone.
+   Without support, with reduced motion, or in print, nothing is ever hidden. */
+@supports (animation-timeline: view()) {
+  @media screen and (prefers-reduced-motion: no-preference) {
+    .portfolio :is(.featured-work, .project, #photography .photo-grid > figure, .documentary-info,
+      .documentary-fieldwork, .documentary-title-card, .about-education, .skill-group, .about-contact) {
+      animation: portfolio-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+}
+
+@keyframes portfolio-reveal {
+  from {
+    opacity: 0;
+    translate: 0 1.25rem;
+  }
+}
+
 /* Native page snapshots only; ordinary links and visible content work without it. */
 @media (prefers-reduced-motion: no-preference) {
   @view-transition {

@@ -321,3 +321,184 @@
     padding: 1.25rem 1.125rem;
   }
 }
+
+/* ---------- Photo viewer: buttons and dialog are added by site.js ---------- */
+.page-creative .zoom-button {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: zoom-in;
+}
+
+.page-creative .zoom-button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.page-creative .documentary-hero .zoom-button:focus-visible {
+  outline-color: var(--on-inverse);
+}
+
+/* A deeper shadow waits on its own layer, so hover only fades its opacity. */
+.page-creative .zoom-button::after {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  pointer-events: none;
+  content: "";
+}
+
+.page-creative .zoom-button:is(:hover, :focus-visible)::after {
+  opacity: 1;
+}
+
+:root:has(.lightbox[open]) {
+  overflow: hidden;
+}
+
+.lightbox {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 4rem 5rem 2rem;
+  border: 0;
+  background: transparent;
+  color: var(--on-overlay);
+  overflow: hidden;
+}
+
+.lightbox[open] {
+  display: grid;
+  place-items: center;
+}
+
+.lightbox::backdrop {
+  background: var(--overlay);
+}
+
+.lightbox-figure {
+  display: grid;
+  justify-items: center;
+  gap: 0.875rem;
+  min-height: 0;
+  margin: 0;
+}
+
+.lightbox-image {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: calc(100vh - 9rem);
+  max-height: calc(100dvh - 9rem);
+  border-radius: var(--radius-sm);
+  object-fit: contain;
+}
+
+.lightbox-caption {
+  max-width: 70ch;
+  margin: 0;
+  color: var(--on-overlay-muted);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.lightbox-button {
+  position: fixed;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0 0 0.125rem;
+  border: 1px solid var(--on-overlay-muted);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--on-overlay);
+  font: 400 1.75rem/1 "IBM Plex Sans", sans-serif;
+  cursor: pointer;
+}
+
+.lightbox-button:is(:hover, :focus-visible) {
+  background: var(--on-overlay);
+  color: var(--text);
+}
+
+.lightbox-button:focus-visible {
+  outline: 3px solid var(--on-overlay);
+  outline-offset: 3px;
+}
+
+.lightbox-close {
+  top: 1rem;
+  right: 1rem;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  top: 50%;
+  margin-top: -1.375rem;
+}
+
+.lightbox-prev {
+  left: 1rem;
+}
+
+.lightbox-next {
+  right: 1rem;
+}
+
+@media (max-width: 36rem) {
+  .lightbox {
+    padding: 4rem 0.75rem 5rem;
+  }
+
+  .lightbox-prev,
+  .lightbox-next {
+    top: auto;
+    bottom: 1rem;
+    margin-top: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .page-creative .zoom-button {
+    transition: transform var(--duration) var(--ease-out);
+  }
+
+  .page-creative .zoom-button::after {
+    transition: opacity var(--duration) var(--ease-out);
+  }
+
+  .page-creative .zoom-button:is(:hover, :focus-visible) {
+    transform: translateY(-4px);
+  }
+
+  .lightbox[open] .lightbox-figure {
+    animation: lightbox-in var(--duration) var(--ease-out);
+  }
+
+  .lightbox[open]::backdrop {
+    animation: lightbox-fade var(--duration) ease-out;
+  }
+}
+
+@keyframes lightbox-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}
+
+@keyframes lightbox-fade {
+  from { opacity: 0; }
+}
