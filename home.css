@@ -69,6 +69,7 @@
 .page-home .work-image--chart {
   padding: 1rem 0.75rem;
   border-color: var(--border);
+  background: var(--figure-background);
 }
 
 .page-home .work-image img {

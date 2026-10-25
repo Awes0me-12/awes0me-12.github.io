@@ -1,16 +1,38 @@
 /* Shared stylesheet for every page. */
 
 /* ---------- Colors and sizes (change these to restyle the whole site) ---------- */
+/* "Stone & Indigo": warm stone background, lighter raised panels, and an indigo
+   accent taken from the textiles and sky in the Yunnan photographs.
+   Contrast ratios are measured against --background / --surface / --surface-sunken. */
 :root {
-  --text: #1f2933;        /* body text */
-  --muted: #4b5563;       /* secondary text, 7.5:1 contrast on white */
-  --accent: #1d4ed8;      /* links and highlights, 6.7:1 contrast on white */
-  --accent-hover: #1e3a8a; /* hover and focus color, 10.4:1 on white, 9.9:1 on --surface */
-  --border: #e5e7eb;
-  --surface: #f8fafc;     /* card background */
-  --background: #ffffff;
+  --text: #1b1c20;          /* body text, 13.8 / 15.3 / 12.4 : 1 */
+  --muted: #45464c;         /* secondary text, 7.6 / 8.5 / 6.9 : 1 */
+  --accent: #2b4a80;        /* links and highlights, 7.1 / 7.9 / 6.4 : 1 */
+  --accent-hover: #1a2f57;  /* hover and focus color, 10.7 / 11.9 / 9.7 : 1 */
+  --on-accent: #ffffff;     /* text on an accent fill, 8.8:1 */
+  --border: #cfccc3;        /* decorative rules and panel edges */
+  --border-strong: #b5b1a6; /* hovered panel edges */
+  --background: #e9e7e1;    /* page */
+  --surface: #f4f3ef;       /* raised panels and cards */
+  --surface-sunken: #dfdcd4; /* chips, code, callouts inside panels */
+  --surface-accent: #dce2eb; /* tinted highlight; accent text is 6.7:1 on it */
+  --figure-background: #ffffff; /* behind charts drawn on white */
+  --header-background: rgb(233 231 225 / 0.92); /* --background, slightly see-through */
+  --overlay: rgb(20 21 24 / 0.94); /* photo viewer backdrop */
+  --on-overlay: #f4f3ef;    /* text on the overlay, 16.4:1 */
+  --on-overlay-muted: #c9c7c0; /* captions on the overlay, 10.8:1 */
+  --shadow-color: 40 36 28; /* RGB channels for shadows */
+  --shadow-sm: 0 1px 2px rgb(var(--shadow-color) / 0.08);
+  --shadow-md: 0 1px 2px rgb(var(--shadow-color) / 0.06), 0 10px 24px -12px rgb(var(--shadow-color) / 0.28);
+  --shadow-lg: 0 2px 4px rgb(var(--shadow-color) / 0.06), 0 24px 48px -20px rgb(var(--shadow-color) / 0.45);
   --max-width: 60rem;
-  --radius: 8px;
+  --radius: 4px;            /* panels and cards */
+  --radius-sm: 2px;         /* images */
+  --radius-pill: 999px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 160ms;
+  --duration: 240ms;
+  --duration-slow: 360ms;
 }
 
 /* ---------- Base ---------- */
@@ -105,7 +127,7 @@ img {
   top: -3rem;
   padding: 0.5rem 1rem;
   background: var(--accent);
-  color: var(--background);
+  color: var(--on-accent);
   z-index: 10;
 }
 
@@ -339,7 +361,7 @@ figcaption {
 
 .photo-grid img {
   border-radius: var(--radius);
-  outline: 1px solid rgb(0 0 0 / 0.08); /* edge for white graphics */
+  outline: 1px solid var(--border); /* edge for white graphics */
   outline-offset: -1px;
 }
 

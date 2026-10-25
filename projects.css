@@ -219,6 +219,7 @@
   width: 100%;
   height: auto;
   border-radius: 3px;
+  background: var(--figure-background);
 }
 
 .page-projects figcaption {

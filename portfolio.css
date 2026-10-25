@@ -41,7 +41,7 @@
 }
 
 .portfolio .skip-link:is(:hover, :focus-visible) {
-  color: var(--background);
+  color: var(--on-accent);
 }
 
 .portfolio .header-inner {
