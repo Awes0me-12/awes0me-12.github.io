@@ -9,7 +9,7 @@ Live site: https://awes0me-12.github.io
 | File | Page |
 |---|---|
 | `index.html` | Home: introduction and three featured items |
-| `projects.html` | Kaggle optimization, COMAP modeling, FXB bus-stop shade study, marketing dashboard, research paper, and how this site was built |
+| `projects.html` | Kaggle optimization, COMAP modeling, FXB bus-stop shade study, marketing dashboard, research paper, Canvas Coach study tool, and how this site was built |
 | `creative.html` | Documentary and field photography |
 | `about.html` | Bio, education and courses, skills, contact |
 | `404.html` | "Page not found", shown by GitHub Pages at any missing address (links start with `/`) |

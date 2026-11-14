@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Projects | Kevin Yang</title>
-  <meta name="description" content="Data and research projects by Kevin Yang: a Kaggle silver medal, a COMAP solar-shading modeling project, a bus-stop shade study near UCSB, a data internship, and a research paper.">
+  <meta name="description" content="Data and research projects by Kevin Yang: a Kaggle silver medal, a COMAP solar-shading modeling project, a bus-stop shade study near UCSB, a data internship, a research paper, and a Canvas study tool.">
   <link rel="canonical" href="https://awes0me-12.github.io/projects.html">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Projects | Kevin Yang">
-  <meta property="og:description" content="Data and research projects by Kevin Yang: a Kaggle silver medal, a COMAP solar-shading modeling project, a bus-stop shade study near UCSB, a data internship, and a research paper.">
+  <meta property="og:description" content="Data and research projects by Kevin Yang: a Kaggle silver medal, a COMAP solar-shading modeling project, a bus-stop shade study near UCSB, a data internship, a research paper, and a Canvas study tool.">
   <meta property="og:url" content="https://awes0me-12.github.io/projects.html">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preload" href="fonts/IBMPlexSans-Regular-Latin1.woff2" as="font" type="font/woff2" crossorigin>
@@ -38,7 +38,7 @@
   <main id="main" class="container">
     <header class="projects-intro">
       <h1>Projects</h1>
-      <p class="lead">Optimization, data analysis, and research.</p>
+      <p class="lead">Optimization, data analysis, research, and tools.</p>
     </header>
 
     <div class="projects-layout">
@@ -50,6 +50,7 @@
           <li><a href="#comap"><span class="index-title">COMAP shading</span> <span class="index-meta">COMAP ICM &middot; 2026</span><span class="index-arrow" aria-hidden="true">→</span></a></li>
           <li><a href="#shade"><span class="index-title">Shade near UCSB</span> <span class="index-meta">FXB Climate Advocates</span><span class="index-arrow" aria-hidden="true">→</span></a></li>
           <li><a href="#research"><span class="index-title">Awe study</span> <span class="index-meta">Research paper &middot; 2022–2023</span><span class="index-arrow" aria-hidden="true">→</span></a></li>
+          <li><a href="#canvas-coach"><span class="index-title">Canvas Coach</span> <span class="index-meta">Personal project &middot; 2026</span><span class="index-arrow" aria-hidden="true">→</span></a></li>
           <li><a href="#this-site"><span class="index-title">Building this site</span> <span class="index-meta">October 2026 – present</span><span class="index-arrow" aria-hidden="true">→</span></a></li>
         </ul>
       </nav>
@@ -267,6 +268,63 @@ else:
             <img src="images/2026-10-21_projects_awe-study-means_v01.png" width="1400" height="672" loading="lazy" decoding="async" alt="Bar chart of mean ratings out of 10, awe group versus neutral group. Feeling of awe: 8.3 versus 6.2. Willingness to talk with a lower social class: 7.3 versus 7.2. With a higher social class: 7.4 versus 7.6. With friends: 8.9 versus 8.8.">
             <figcaption>Mean ratings for each group (40 responses each), redrawn from the paper's data. None of the three willingness gaps was statistically significant. <a href="images/2026-10-21_projects_awe-study-means_v01.png">View full-size chart</a>.</figcaption>
           </figure>
+        </article>
+
+        <article class="project" id="canvas-coach">
+          <h2>Canvas Coach: A Study Assistant for Canvas</h2>
+          <p class="meta">Personal project &middot; October 2026 – present</p>
+          <p class="project-summary"><strong>A read-only tool that lets an AI assistant answer study questions from my Canvas courses.</strong> It works in Claude Code and in Codex, and answers in English or Chinese.</p>
+          <div class="project-role">
+            <h3>My role</h3>
+            <p>My part: I designed and built this skill from scratch, to help with situations I run into in my own courses.</p>
+          </div>
+
+          <section class="case-section case-section--result">
+            <h3>What it answers</h3>
+            <ul>
+              <li>What is overdue, due in the next 7 days, and due later, and whether I have handed it in.</li>
+              <li>What to do each day this week: one must-do per day with the reason, and one rest day.</li>
+              <li>When deadlines from different courses fall within 48 hours of each other.</li>
+              <li>What changed on Canvas since I last looked: new work, moved dates, and new grades.</li>
+              <li>Where I stand in each course, and what a target grade would take.</li>
+              <li>What an assignment asks for, from its instructions and rubric.</li>
+            </ul>
+          </section>
+
+          <section class="case-section case-section--purpose">
+            <h3>Why I built it</h3>
+            <p>Canvas is the course website where my classes post assignments, announcements, and grades. Each course keeps them on its own pages. I wanted to ask one plain question, such as "What should I do today?", and get an answer taken from Canvas itself.</p>
+          </section>
+
+          <section class="case-section case-section--method">
+            <h3>How it works</h3>
+            <ul>
+              <li>Reading Canvas: I log in myself in a browser window, and the tool never sees my password. A short JavaScript collector then reads my courses. It only reads, and only from my school's Canvas address. It cannot post, message, or submit anything.</li>
+              <li>Facts in code: Python scripts work out every date, status, and sum, and the assistant only relays them. Canvas's own grade and the tool's estimate are labeled separately.</li>
+              <li>Study plan: fixed rules place graded work, exam review, and the week's reading on days, and every line gives its reason. The plan is a suggestion that I can overrule.</li>
+              <li>Hidden text: if an assignment's instructions contain text that a reader cannot see, the tool marks it and never follows it as an instruction.</li>
+              <li>Privacy: the data it collects is saved on my own computer, and the tool has no server of its own. Whatever the assistant reads still passes through that AI service.</li>
+              <li>Tests: automated tests run against a fake Canvas, so they need no login and touch none of my data.</li>
+              <li>Code: Python 3.10 or newer with only its standard library, for macOS.</li>
+            </ul>
+          </section>
+
+          <section class="case-section case-section--method">
+            <h3>How I built it</h3>
+            <ul>
+              <li>First version, <time datetime="2026-10-15">October 15, 2026</time>: the Canvas reader, deadlines and clashes, the day-by-day plan, grades, assignment instructions, and one folder that serves both Claude Code and Codex.</li>
+              <li>After that I used it in my own courses and changed what did not work. The updates below are from <time datetime="2026-11-13">November 13, 2026</time>.</li>
+              <li>Plan order: a quiz that was open for one day was missed, because the day's headline stayed on homework due three days later. Graded work due today now comes first.</li>
+              <li>Earlier starts: work worth 5% of the grade or more now gets sessions seven and four days ahead. An exam worth 20% or more gets review 7, 5, 3, 2, and 1 days ahead.</li>
+              <li>Phone alerts: a desktop notification only shows while my Mac is awake. Exams and heavy work can now go into a calendar of their own, with alarms that reach my phone. Nothing is written there until I switch it on.</li>
+              <li>Quieter briefing: the daily summary now reports each change once. Small undated items, such as an attendance mark for every class, are counted in one note instead of listed.</li>
+            </ul>
+          </section>
+
+          <section class="case-section case-section--links">
+            <h3>Source code</h3>
+            <p><a href="https://github.com/Awes0me-12/canvas-skill">Canvas Coach on GitHub</a></p>
+          </section>
         </article>
 
         <article class="project" id="this-site">

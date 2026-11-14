@@ -408,6 +408,7 @@
   :root:not(.has-scroll-spy) .page-projects:has(#comap:target) .project-index a[href="#comap"],
   :root:not(.has-scroll-spy) .page-projects:has(#shade:target) .project-index a[href="#shade"],
   :root:not(.has-scroll-spy) .page-projects:has(#research:target) .project-index a[href="#research"],
+  :root:not(.has-scroll-spy) .page-projects:has(#canvas-coach:target) .project-index a[href="#canvas-coach"],
   :root:not(.has-scroll-spy) .page-projects:has(#this-site:target) .project-index a[href="#this-site"] {
     color: var(--accent);
     background: var(--surface);
@@ -418,6 +419,7 @@
   :root:not(.has-scroll-spy) .page-projects:has(#comap:target) .project-index a[href="#comap"]::before,
   :root:not(.has-scroll-spy) .page-projects:has(#shade:target) .project-index a[href="#shade"]::before,
   :root:not(.has-scroll-spy) .page-projects:has(#research:target) .project-index a[href="#research"]::before,
+  :root:not(.has-scroll-spy) .page-projects:has(#canvas-coach:target) .project-index a[href="#canvas-coach"]::before,
   :root:not(.has-scroll-spy) .page-projects:has(#this-site:target) .project-index a[href="#this-site"]::before {
     opacity: 1;
   }
